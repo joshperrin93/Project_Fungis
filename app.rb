@@ -20,11 +20,8 @@ class Application < Sinatra::Base
 
   post '/index' do
     location = params{:location}
-    p location
     @search = RestaurantFinder.new(location['location'])
-    p @search
     @restaurants = @search.find
-    p @restaurants
     return erb(:results)
   end
 
