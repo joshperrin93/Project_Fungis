@@ -1,5 +1,9 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require "uri"
+require "net/http"
+require 'google_places'
+require 'pp'
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
@@ -13,10 +17,7 @@ get "/" do
 end
  
 end
-require "uri"
-require "net/http"
-require 'google_places'
-require 'pp'
+
     
 @client = GooglePlaces::Client.new('AIzaSyBKVLaoQMhqkYNmZRWlBRwHS_v1UiwIRTA')
 @results = @client.spots_by_query('Pizza', :types => ['restaurant', 'food'])
