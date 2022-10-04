@@ -1,5 +1,32 @@
-<form action="/index" method="post">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fungis</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+
+  <h1> Fungis </h1>
+
+  <form action="/index" method="post">
     <label for="search">Location</label>
     <input type="text" name="location">
     <button type="submit" name="search">Search</button>
 </form>
+
+  <div id="map"></div>
+
+  
+	<script src="index.js"></script>
+
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpGH4cWpYz5cAYIyN01D9b0bBbszawKRw&callback=initMap">
+</script>
+
+  </body>
+</html>
+
+
