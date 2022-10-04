@@ -1,9 +1,10 @@
 require 'google_places'
+require './api_key.rb'
 
 class RestaurantFinder
     def initialize(location)
         @location = location
-        @client = GooglePlaces::Client.new('AIzaSyBKVLaoQMhqkYNmZRWlBRwHS_v1UiwIRTA')
+        @client = GooglePlaces::Client.new($api_key)
     end
 
     def find
