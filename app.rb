@@ -6,6 +6,7 @@ require 'google_places'
 require 'pp'
 require_relative 'lib/database_connection'
 require_relative 'lib/restaurant_finder'
+require_relative 'lib/google-map'
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
@@ -19,6 +20,7 @@ class Application < Sinatra::Base
   end
 
   post '/index' do
+    @MapFinder = MapFinder.new("hello")
     location = params[:location]
     search = RestaurantFinder.new(location, '')
     restaurants = search.find
@@ -40,9 +42,6 @@ class Application < Sinatra::Base
   end
 
 end
-
-
-
 
 
 
