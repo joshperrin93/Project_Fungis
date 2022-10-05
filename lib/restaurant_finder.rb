@@ -22,11 +22,6 @@ class RestaurantFinder
 
     def restaurant_info
         place = @client.spot(@place_id)
-        url = place.photos[0].fetch_url(800)
-        puts "-------"
-        puts place.photos[0].fetch_url(800)
-        puts "-------"
-        puts url
         return place
     end
 end
