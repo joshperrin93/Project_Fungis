@@ -30,7 +30,6 @@ class Application < Sinatra::Base
     place_id = params[:place_id]
     search = RestaurantFinder.new('', place_id)
     @place_info = search.restaurant_info
-    @url = @place_info.photos[0].fetch_url(800)
     return erb(:more_info)
   end
 
