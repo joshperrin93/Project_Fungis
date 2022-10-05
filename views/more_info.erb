@@ -1,0 +1,39 @@
+<h1>More info on <%=@place_info.name%></h1>
+<table>
+  <tr>
+    <td>Address: <%=@place_info.formatted_address%></td>
+  </tr>
+  <tr>
+    <td>Phone number: <%=@place_info.formatted_phone_number%></td>
+  </tr>
+  <tr>
+    <td>Website: <%=@place_info.website%></td>
+  </tr>
+  <tr>
+    <td>Opening hours: <%=@place_info.opening_hours['weekday_text']%></td>
+  </tr>
+  <tr>
+    <td>Opening now: <%=@place_info.opening_hours['open_now']%></td>
+  </tr>
+</table>
+
+<img alt=<%=@place_info.name%> src=<%=@place_info.photos[0].fetch_url(800)%>
+         width=150" height="70">
+<img alt=<%=@place_info.name%> src=<%=@place_info.photos[1].fetch_url(800)%>
+         width=150" height="70">
+<img alt=<%=@place_info.name%> src=<%=@place_info.photos[2].fetch_url(800)%>
+         width=150" height="70">
+<img alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
+         width=150" height="70">
+
+<h1>Reviews</h1>
+<% @place_info.reviews.each do |review| %>
+    <tr>
+      <td><%=review.author_name%></td>
+      <br>
+      <td><%=review.text%></td>
+      <br>
+      <br>
+    </tr>
+<% end %>
+</table>

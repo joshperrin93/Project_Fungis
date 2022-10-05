@@ -20,13 +20,19 @@ class Application < Sinatra::Base
   end
 
   post '/index' do
-    location = params{:location}
-    @search = RestaurantFinder.new(location['location'])
-    @restaurants = @search.find
-    p @restaurants
     @MapFinder = MapFinder.new("hello")
-    @sorted_restaurants = sort_by_rating(@restaurants)
+    location = params[:location]
+    search = RestaurantFinder.new(location, '')
+    restaurants = search.find
+    @sorted_restaurants = sort_by_rating(restaurants)
     return erb(:results)
+  end
+
+  get '/index/:place_id' do
+    place_id = params[:place_id]
+    search = RestaurantFinder.new('', place_id)
+    @place_info = search.restaurant_info
+    return erb(:more_info)
   end
 
   private
