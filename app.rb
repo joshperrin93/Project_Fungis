@@ -23,12 +23,9 @@ class Application < Sinatra::Base
     location = params{:location}
     @search = RestaurantFinder.new(location['location'])
     @restaurants = @search.find
-<<<<<<< HEAD
     p @restaurants
     @MapFinder = MapFinder.new("hello")
-=======
     @sorted_restaurants = sort_by_rating(@restaurants)
->>>>>>> main
     return erb(:results)
   end
 
@@ -39,8 +36,6 @@ class Application < Sinatra::Base
   end
 
 end
-
-
 
 
 
