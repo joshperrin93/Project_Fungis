@@ -6,6 +6,10 @@
       <td><%=restaurant[1]%></td>
       <td><%=restaurant[2]%></td>
      <!-- <td><%=restaurant[3]%></td> -->
+      <td><form action="/index/<%=restaurant[4]%>" method="GET">
+        <input type="submit" value="More info">
+      </form></td>
+      <!-- <td><button type="submit" name="info" href="/index/" + restaurant[4]>More info</button></td> -->
     </tr>
   <% end %>
 </table>
