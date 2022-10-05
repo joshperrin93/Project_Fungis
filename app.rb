@@ -23,14 +23,13 @@ class Application < Sinatra::Base
     @search = RestaurantFinder.new(location['location'])
     @restaurants = @search.find
     @sorted_restaurants = sort_by_rating(@restaurants)
-    @sorted_restaurants.reverse!
     return erb(:results)
   end
 
   private
 
   def sort_by_rating(arg)
-    return arg.sort_by!{|restaurant| [restaurant[2]]}
+    return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
 end
