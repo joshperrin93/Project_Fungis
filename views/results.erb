@@ -1,8 +1,11 @@
 <h1>Search results</h1>
 <table>
-  <% @restaurants.each do |restaurant| %>
+  <% @sorted_restaurants.each do |restaurant| %>
     <tr>
-      <td><%=restaurant%></td>
+      <td><%=restaurant[0]%></td>
+      <td><%=restaurant[1]%></td>
+      <td><%=restaurant[2]%></td>
+     <!-- <td><%=restaurant[3]%></td> -->
     </tr>
   <% end %>
 </table>

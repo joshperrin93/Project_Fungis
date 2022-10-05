@@ -21,13 +21,21 @@ class Application < Sinatra::Base
 
   post '/index' do
     location = params{:location}
-    p location
     @search = RestaurantFinder.new(location['location'])
-    p @search
     @restaurants = @search.find
+<<<<<<< HEAD
     p @restaurants
     @MapFinder = MapFinder.new("hello")
+=======
+    @sorted_restaurants = sort_by_rating(@restaurants)
+>>>>>>> main
     return erb(:results)
+  end
+
+  private
+
+  def sort_by_rating(arg)
+    return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
 end
