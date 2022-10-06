@@ -1,3 +1,17 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Fungis</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+
+
+<body>
+
 <h1>Search results</h1>
 <table>
   <% @sorted_restaurants.each do |restaurant| %>
@@ -15,3 +29,30 @@
 </table>
 
 <div id="map"></div>
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpGH4cWpYz5cAYIyN01D9b0bBbszawKRw&callback=initMap">
+</script>
+
+
+<script>
+
+function initMap() {
+
+const london = {lat: 51.5048069497465, lng: -0.12909098341433795}
+map = new google.maps.Map(document.getElementById('map'), {
+center: london,
+zoom: 8,
+mapId: 'ca5dec382f52fe24'
+});
+
+const marker = new google.maps.Marker({
+  position: london,
+  map: map,
+});
+}
+
+</script>
+
+</body>
+
+</html>

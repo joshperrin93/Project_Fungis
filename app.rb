@@ -20,8 +20,7 @@ class Application < Sinatra::Base
   end
 
   post '/index' do
-    @MapFinder = MapFinder.new("hello")
-       location = params[:location]
+    location = params[:location]
     search = RestaurantFinder.new(location, '')
     restaurants = search.find
     @sorted_restaurants = sort_by_rating(restaurants)
