@@ -43,6 +43,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -60,9 +61,25 @@
           0,
           0,
           0,
+          0,
+          0,
+          0,
           null,
           null,
+          0,
           null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          1,
+          0,
           null,
           null,
           null,
@@ -70,11 +87,6 @@
           null,
           null,
           null
-        ]
-      },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/database_connection.rb": {
-        "lines": [
-
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/restaurant_finder.rb": {
@@ -86,6 +98,7 @@
           1,
           0,
           0,
+          0,
           null,
           null,
           1,
@@ -94,17 +107,95 @@
           0,
           null,
           null,
+          1,
+          0,
+          null,
+          0,
           null,
           null,
-          null,
+          1,
+          0,
+          0,
           null,
           null,
           null,
           null,
           null
         ]
+      },
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/user_repositry_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user_repository.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          4,
+          4,
+          4,
+          4,
+          20,
+          20,
+          20,
+          20,
+          null,
+          20,
+          null,
+          4,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1664899203
+    "timestamp": 1665072088
   }
 }
