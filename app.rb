@@ -6,7 +6,6 @@ require 'google_places'
 require 'pp'
 require_relative 'lib/database_connection'
 require_relative 'lib/restaurant_finder'
-require_relative 'lib/google-map'
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
@@ -24,6 +23,8 @@ class Application < Sinatra::Base
     search = RestaurantFinder.new(location, '')
     restaurants = search.find
     @sorted_restaurants = sort_by_rating(restaurants)
+    @coordinates = [[51.5000, -0.3333], [51.509865, -0.118092], [51.485093, -0.174936]]
+    # @coordinates = [{"lat" =>51.5000, "lng" => -0.3333}, {"lat" => 51.509865, "lng" => -0.118092}, {"lat" => 51.485093, "lng" => -0.174936}]
     return erb(:results)
   end
 

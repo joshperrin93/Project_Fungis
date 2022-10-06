@@ -45,10 +45,31 @@ zoom: 8,
 mapId: 'ca5dec382f52fe24'
 });
 
-const marker = new google.maps.Marker({
-  position: london,
+// const marker = new google.maps.Marker({
+//   position: london,
+//   map: map,
+// });
+// }
+
+const lng_lat = []
+
+// function coordinates() {
+//   @sorted_restaurants.map(restaurant => {
+//     markers.push({lat: restaurant[5], lng: restaurant[6]})
+//   })
+// };
+
+// let markers = <%=@coordinates%>
+<% @coordinates.each do |lat, lng| %>
+  lng_lat.push({lat: <%=lat%>, lng: <%=lng%>})
+<%end%>
+
+lng_lat.forEach(marker => {
+  marker = new google.maps.Marker({
+  position: marker,
   map: map,
 });
+})
 }
 
 </script>
