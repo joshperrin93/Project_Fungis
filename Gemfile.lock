@@ -1,12 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    ansi (1.5.0)
+    diff-lcs (1.5.0)
+    docile (1.4.0)
     google_maps_service (0.4.2)
       hurley (~> 0.1)
       multi_json (~> 1.11)
-     ansi (1.5.0)
-    diff-lcs (1.5.0)
-    docile (1.4.0)
+      retriable (~> 2.0)
     google_places (2.0.0)
       httparty (>= 0.13.1)
     httparty (0.20.0)
