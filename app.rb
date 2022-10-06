@@ -6,6 +6,7 @@ require 'google_places'
 require 'pp'
 require_relative 'lib/database_connection'
 require_relative 'lib/restaurant_finder'
+require_relative 'lib/database_connection'
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
