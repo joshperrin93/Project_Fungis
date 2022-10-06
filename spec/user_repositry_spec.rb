@@ -7,6 +7,10 @@ def reset_tables
 end
 
 RSpec.describe UserRepository do
+    before(:each) do
+        reset_tables
+    end
+
     it 'adds a new user' do
         new_user = User.new
         user_repo = UserRepository.new
