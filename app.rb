@@ -26,6 +26,14 @@ class Application < Sinatra::Base
   end
 
   post '/index' do
+    return erb(:index)
+  end
+
+  get '/signup_success' do
+    return erb(:signup_success)
+  end
+
+  post '/results' do
     location = params[:location]
     search = RestaurantFinder.new(location, '')
     restaurants = search.find
@@ -49,15 +57,18 @@ class Application < Sinatra::Base
     return erb(:signup)
   end
 
+  get 'login' do
+    return erb(:login)
+  end
 
-  post '/signup' do
-    new_user = User.new
-    new_user.name = params[:name]
-    new_user.password = params[:password]
-    new_user.email = params[:email]
+  post '/signup_success' do
+    @new_user = User.new
+    @new_user.name = params[:name]
+    @new_user.password = params[:password]
+    @new_user.email = params[:email]
     add_new_user = UserRepository.new
-    add_new_user.create(new_user)
-   return erb(:index)
+    add_new_user.create(@new_user)
+    return erb(:signup_success)
   end
 
   private
