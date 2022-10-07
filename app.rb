@@ -10,15 +10,14 @@ require_relative 'lib/database_connection'
 require_relative 'lib/user'
 require_relative 'lib/user_repository'
 
-
 DatabaseConnection.connect
-
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
   # without having to restart the server.
   configure :development do
     register Sinatra::Reloader
+    enable :sessions
   end
 
   get '/index' do
@@ -26,7 +25,22 @@ class Application < Sinatra::Base
   end
 
   post '/index' do
-    return erb(:index)
+    user_repo = UserRepository.new
+    email = params[:email]
+    password = params[:password]
+    user = user_repo.find_by_email(email)
+
+    if user == false
+      # If user doesn't exist according to #find_by_email
+      return erb(:login_failure)
+    elsif user.password == password && user.email == email
+      # If user exists, save user.id to current session, save user.name to current session
+      session[:user_id] = user.id
+      session[:user_name] = user.name
+      return redirect("/index")
+    elsif user.password != password && user.email == email
+      return erb(:login_failure)
+    end
   end
 
   get '/signup_success' do
@@ -77,9 +91,4 @@ class Application < Sinatra::Base
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
-
 end
-
-
-
-
