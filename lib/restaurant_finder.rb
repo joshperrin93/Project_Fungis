@@ -16,7 +16,6 @@ class RestaurantFinder
 
     def find_name
         results = @client.spots_by_query('Vegan ' + @location, :types => ['restaurant', 'food'])
-        # spot = @client.spots(-0.118092, 51.509865, :name => 'vegan', :types => 'restaurant')
         return results.map {|item| [item.name]}
     end
 
