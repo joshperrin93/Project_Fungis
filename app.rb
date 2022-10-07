@@ -7,6 +7,12 @@ require 'pp'
 require_relative 'lib/database_connection'
 require_relative 'lib/restaurant_finder'
 require_relative 'lib/database_connection'
+require_relative 'lib/user'
+require_relative 'lib/user_repository'
+
+
+DatabaseConnection.connect
+
 
 class Application < Sinatra::Base
   # This allows the app code to refresh
@@ -39,11 +45,27 @@ class Application < Sinatra::Base
     return erb(:more_info)
   end
 
+  get '/signup' do
+    return erb(:signup)
+  end
+
+
+  post '/signup' do
+    new_user = User.new
+    new_user.name = params[:name]
+    new_user.password = params[:password]
+    new_user.email = params[:email]
+    add_new_user = UserRepository.new
+    add_new_user.create(new_user)
+   return erb(:index)
+  end
+
   private
 
   def sort_by_rating(arg)
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
+
 
 end
 
