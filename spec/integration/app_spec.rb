@@ -47,7 +47,45 @@ describe Application do
         end
     end
 
+    context 'post /results' do
+        it "shows the user the results of their search in a list" do
+            response = post("/results", location: "london")
+            expect(response.status).to eq 200
+            expect(response.body).to include('<h1>Search results</h1>')
+        end
+    end
 
+    context 'GET /index/:place_id' do
+        it "returns more detailed info about a specific place" do
+            response = get("/index/ChIJi5rjorccdkgRhHRpRo5pQDE")
+            expect(response.status).to eq 200
+            expect(response.body).to include("More info on The Vurger Co Shoreditch")
+        end
+    end
+
+    context 'GET /signup' do
+        it "returns the signup page and form" do
+            response = get("/signup")
+            expect(response.status).to eq 200
+            expect(response.body).to include('<form method = "post" action = "/signup_success"> ')
+        end
+    end
+
+    context "GET /login" do
+        it "returns the login page" do
+            response = get("/login")
+            expect(response.status).to eq 200
+            expect(response.body).to eq('<h1>Login page</h1>')
+        end
+    end
+
+    context "POST /signup_success" do
+        xit "returns the signup success page with the login form" do
+            response = post("/signup_success", email: "ella@makers.com", password: "password!123")
+            expect(response.status).to eq 200
+            expect(response.body).to include('<input type="password"  name="password" placeholder="Password">')
+        end
+    end
 
 
 end
