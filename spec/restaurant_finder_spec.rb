@@ -15,4 +15,21 @@ RSpec.describe "RestaurantFinder" do
         places = RestaurantFinder.new("London", " ")
         expect(places.find_name.first).to eq(["Unity Diner"])
         end 
+
+    # xit "searches the Google Places API by place_id and returns the name of the place" do
+    #     place2 = double('place')
+
+    #     allow(place2).to receive(:item) {"The Vurger Company"}
+
+    #     places = RestaurantFinder.new("", "ChIJi5rjorccdkgRhHRpRo5pQDE")
+    #     expect(places.restaurant_info).to eq(["The Vurger Company"])
+    #     end 
+    # xit "searches the Google Places API by place_id and returns the info of the place" do
+    #     place2 = double('place')
+
+    #     allow(place2).to receive(:item) {"The Vurger Company"}
+
+    #     places = RestaurantFinder.new("", "ChIJi5rjorccdkgRhHRpRo5pQDE")
+    #     expect(places.restaurant_info.formatted_address).to include("Unit 9, Richmix, Avant Garde, Cygnet St, London E1 6LD, UK")
+    #     end 
 end
