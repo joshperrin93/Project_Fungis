@@ -10,10 +10,9 @@ RSpec.describe "RestaurantFinder" do
     it "calls the Google Places API and returns the name of the first place" do
         place2 = double('place')
 
-        allow(place2).to receive(:item) {'WAVE'}
+        allow(place2).to receive(:item) {"Unity Diner"}
 
         places = RestaurantFinder.new("London", " ")
-        expect(places.find_name.first).to eq(['WAVE'])
+        expect(places.find_name.first).to eq(["Unity Diner"])
         end 
-end
 end
