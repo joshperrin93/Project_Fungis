@@ -26,6 +26,7 @@ class Application < Sinatra::Base
   end
 
   get '/index' do
+    puts logged_in?
     return erb(:index)
   end
 
@@ -92,6 +93,11 @@ class Application < Sinatra::Base
     return erb(:login)
   end
 
+  post '/logout' do
+    session.clear
+    redirect "/login"
+  end
+
   post '/signup_success' do
     @new_user = User.new
     @new_user.name = params[:name]
@@ -102,9 +108,13 @@ class Application < Sinatra::Base
       return erb(:signup_success)
   end
 
-  post '/favorite_restaurants' do
+  get '/favorite_restaurants' do
+    repo = Favorites_Repository.new
+    @all_favorites =  repo.all
+    return erb(:favorite_restaurants)
+  end
 
-      
+  post '/favorite_restaurants' do
       favorite = Favorites.new
       repo = Favorites_Repository.new
       favorite.place_id = session[:place_id]
@@ -112,8 +122,6 @@ class Application < Sinatra::Base
       favorite.user_id =  session[:user_id] 
       @new_favorite = repo.create(favorite)
       @all_favorites =  repo.all
-
-
       return erb(:favorite_restaurants)
 
   end
@@ -122,6 +130,17 @@ class Application < Sinatra::Base
 
   def sort_by_rating(arg)
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
+  end
+
+  helpers do
+
+  def logged_in?
+    if session[:user_id] == nil
+      return false  
+   else
+      return true
+   end 
+   end
   end
 
 

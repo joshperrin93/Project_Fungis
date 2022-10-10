@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fungis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/icon.png">
+  </head>
+  <body>
+    <nav class="navbar text-dark" style="background-color: EBF2FA;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Fungis</span>
+    <ul class="nav justify-content-end mb-lg-0">
+    <% if session[:user_id] == nil %>
+        <li class="nav-item text-dark">
+          <a class="nav-link active text-dark" href='/signup'> Signup </a>
+        </li>
+        <li class="nav-item text-dark">
+          <a class="nav-link active text-dark" href='/login'> Login </a>
+        </li>
+    <%else%>
+        <li class="nav-item text-dark">
+            <a class="nav-link active text-dark" href='/index'> Home </a>
+        </li>
+        <li class="nav-item text-dark">
+            <a class="nav-link active text-dark" href='/favorite_restaurants'> Favourite Restaurants </a>
+        </li>
+        <li class="nav-item text-dark">
+            <form class="d-flex" action='' method='POST'>
+                <input type="submit" value="Log Out">
+            </form>
+        </li>
+  
+    <%end%> 
+    </ul>
+  </div>
+</nav> 
+
+    <%= yield %>
+  </body>
+</html>
