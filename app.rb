@@ -100,10 +100,18 @@ class Application < Sinatra::Base
 
   post '/signup_success' do
     @new_user = User.new
+    add_new_user = UserRepository.new
+    all_users = add_new_user.all
+
+    all_users.each do |user|
+      if user.email.include? params[:email]
+        return erb(:login)
+      end
+    end
+
     @new_user.name = params[:name]
     @new_user.password = params[:password]
     @new_user.email = params[:email]
-    add_new_user = UserRepository.new
     add_new_user.create(@new_user)
       return erb(:signup_success)
   end
@@ -123,7 +131,6 @@ class Application < Sinatra::Base
       @new_favorite = repo.create(favorite)
       @all_favorites =  repo.all
       return erb(:favorite_restaurants)
-
   end
 
   private
@@ -132,16 +139,15 @@ class Application < Sinatra::Base
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
-  helpers do
-
   def logged_in?
     if session[:user_id] == nil
       return false  
    else
       return true
    end 
-   end
   end
+ 
+
 
 
 
