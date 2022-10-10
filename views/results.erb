@@ -19,8 +19,13 @@
       <td><%=restaurant[0]%></td>
       <td><%=restaurant[1]%></td>
       <td><%=restaurant[2]%></td>
+      <% if restaurant[3][0] != nil %>
       <td><img alt=<%=restaurant[0]%> src=<%=restaurant[3][0].fetch_url(800)%>
-         width=150" height="70"></td>
+        width="150" height="70"></td>
+      <% else %>
+        <td><img alt="Vegan food" src="https://hips.hearstapps.com/hmg-prod/images/vegan-caesar-salad-1615841852.jpg"
+          width="150" height="70"></td>
+      <% end %>
       <td><form action="/index/<%=restaurant[4]%>" method="GET">
         <input type="submit" value="More info">
       </form></td>
@@ -38,15 +43,15 @@ src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap"
 
 function initMap() {
 
-const london = {lat: 51.5048069497465, lng: -0.12909098341433795}
+const centre = {lat: <%=@centre[0]%>, lng: <%=@centre[1]%>}
 map = new google.maps.Map(document.getElementById('map'), {
-center: london,
-zoom: 8,
-mapId: 'ca5dec382f52fe24'
+  center: centre,
+  zoom: 11,
+  mapId: 'ca5dec382f52fe24'
 });
 
 // const marker = new google.maps.Marker({
-//   position: london,
+//   position: centre,
 //   map: map,
 // });
 // }
