@@ -24,5 +24,5 @@ class RestaurantFinder
     end
 end
 
-# restaurant = RestaurantFinder.new('London')
-# p restaurant.find_id
+# restaurant = RestaurantFinder.new('London', '')
+# p restaurant.lat_long

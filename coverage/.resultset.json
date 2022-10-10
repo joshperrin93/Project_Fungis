@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/integration/app_spec.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/integration/app_spec.rb": {
         "lines": [
           1,
           1,
@@ -96,7 +96,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/app.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/app.rb": {
         "lines": [
           1,
           1,
@@ -194,7 +194,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/restaurant_finder.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/restaurant_finder.rb": {
         "lines": [
           1,
           1,
@@ -226,14 +226,14 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user_repository.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user_repository.rb": {
         "lines": [
           1,
           1,
@@ -245,13 +245,13 @@
           9,
           9,
           9,
-          40,
-          40,
-          40,
-          40,
-          40,
+          48,
+          48,
+          48,
+          48,
+          48,
           null,
-          40,
+          48,
           null,
           9,
           null,
@@ -288,7 +288,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/spec/restaurant_finder_spec.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/restaurant_finder_spec.rb": {
         "lines": [
           1,
           null,
@@ -327,7 +327,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/spec/user_repositry_spec.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/user_repositry_spec.rb": {
         "lines": [
           1,
           null,
@@ -391,6 +391,6 @@
         ]
       }
     },
-    "timestamp": 1665168092
+    "timestamp": 1665391461
   }
 }

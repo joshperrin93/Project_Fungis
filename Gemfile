@@ -10,6 +10,7 @@ gem "webrick", "~> 1.7"
 gem "rack-test", "~> 2.0"
 gem "google_places"
 gem 'google_maps_service'
+gem 'geocoder'
 group :test do
     gem 'rspec'
     gem 'simplecov', require: false

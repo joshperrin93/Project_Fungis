@@ -4,6 +4,7 @@ require "uri"
 require "net/http"
 require 'google_places'
 require 'pp'
+require 'geocoder'
 require_relative 'lib/database_connection'
 require_relative 'lib/restaurant_finder'
 require_relative 'lib/database_connection'
@@ -51,6 +52,8 @@ class Application < Sinatra::Base
     location = params[:location]
     search = RestaurantFinder.new(location, '')
     restaurants = search.find
+    results = Geocoder.search(location)
+    @centre = results.first.coordinates
     @sorted_restaurants = sort_by_rating(restaurants)
     @coordinates = []
     @sorted_restaurants.each {|restaurant| 
