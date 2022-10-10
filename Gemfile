@@ -4,7 +4,7 @@ source "https://rubygems.org"
 # gem "rails"
 
 gem "pg", "~> 1.3"
-gem "sinatra", "~> 3.0"
+gem "sinatra", github: "sinatra/sinatra"
 gem "sinatra-contrib", "~> 3.0"
 gem "webrick", "~> 1.7"
 gem "rack-test", "~> 2.0"

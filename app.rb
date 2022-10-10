@@ -71,7 +71,7 @@ class Application < Sinatra::Base
     return erb(:signup)
   end
 
-  get 'login' do
+  get '/login' do
     return erb(:login)
   end
 
