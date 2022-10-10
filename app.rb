@@ -9,6 +9,10 @@ require_relative 'lib/restaurant_finder'
 require_relative 'lib/database_connection'
 require_relative 'lib/user'
 require_relative 'lib/user_repository'
+require_relative 'lib/favorites'
+require_relative 'lib/favorites_repository'
+
+
 
 DatabaseConnection.connect
 
@@ -62,9 +66,16 @@ class Application < Sinatra::Base
 
   get '/index/:place_id' do
     place_id = params[:place_id]
+    saved_restaurants = []
+    # session[:saved_restaurants] = place_id
+    saved_restaurants.push(place_id)
+    session[:saved_restaurants] = saved_restaurants
     search = RestaurantFinder.new('', place_id)
     @place_info = search.restaurant_info
+    p  saved_restaurants
+
     return erb(:more_info)
+
   end
 
   get '/signup' do
@@ -85,10 +96,25 @@ class Application < Sinatra::Base
     return erb(:signup_success)
   end
 
+  post '/favorite_restaurants' do
+      favorite = Favorites.new
+      repo = Favorites_Repository.new
+      favorite.place_id = params[:place_id]
+      favorite.user_id =  session[:user_id] 
+      @new_favorite = repo.create(favorite)
+      @all_favorites =  repo.all
+      p  params[:place_id]
+      return erb(:favorite_restaurants)
+
+  end
+
   private
 
   def sort_by_rating(arg)
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
+
+
+
 
 end
