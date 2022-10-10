@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sinatra/sinatra.git
-  revision: ceb49f043c37244bc017c9f33f5fdf18f1662ac7
+  revision: 8ff496bd4877520599e1479d6efead39304edceb
   specs:
     rack-protection (3.0.2)
       rack
@@ -92,4 +92,4 @@ DEPENDENCIES
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.3.22
+   2.3.21

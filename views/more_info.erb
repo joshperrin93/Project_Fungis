@@ -38,6 +38,8 @@
 <% end %>
 </table>
 
+<% if session[:user_id] != nil %>
 <form method = "post" action = "/favorite_restaurants">  
-<input type="submit" value="Submit">
+<input type="submit" value="Save">
 </form>
+<%end%>

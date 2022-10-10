@@ -1,1 +1,8 @@
 <h1> This is your listing </h1>
+
+
+<% @all_favorites.each do |restaurant|%>
+
+    <%= restaurant.name %>
+    <a href="/index/<%= restaurant.place_id %>"</a>
+<%end%>

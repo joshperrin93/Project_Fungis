@@ -12,6 +12,7 @@ class Favorites_Repository
             favorite.id = record['id'].to_i
             favorite.place_id = record['place_id']
             favorite.user_id = record['user_id']
+            favorite.name= record['name']
 
             @favorites << favorite
         end
@@ -20,14 +21,16 @@ class Favorites_Repository
 
 
     def create(favorite)
-      sql = 'INSERT INTO favourites (place_id, user_id)
-                VALUES($1, $2);
+      sql = 'INSERT INTO favourites (place_id, user_id, name)
+                VALUES($1, $2, $3);
             '
       sql_params = [
+        favorite.place_id,
         favorite.user_id,
-        favorite.place_id
+        favorite.name
       ]
-
+     p sql_params 
+     
   
       result_set = DatabaseConnection.exec_params(sql, sql_params)
     end
