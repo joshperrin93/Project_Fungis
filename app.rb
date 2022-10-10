@@ -129,8 +129,12 @@ class Application < Sinatra::Base
       favorite.name = session[:name]
       favorite.user_id =  session[:user_id] 
       @new_favorite = repo.create(favorite)
-      @all_favorites =  repo.all
-      return erb(:favorite_restaurants)
+      if @new_favorite == false
+        return erb(:index)
+      else 
+        @all_favorites =  repo.user_favorite(favorite.user_id)
+        return erb(:favorite_restaurants)
+      end
   end
 
   private
