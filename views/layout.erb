@@ -18,6 +18,10 @@
         <li class="nav-item text-dark">
             <a class="nav-link active text-dark" href='/index'> Home </a>
         </li>
+        <form class="d-flex" action="/results" method="post">
+            <input class="form-control me-2" type="text" name="location" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit" name="search">Search</button>
+        </form>
         <li class="nav-item text-dark">
           <a class="nav-link active text-dark" href='/signup'> Signup </a>
         </li>
@@ -25,9 +29,13 @@
           <a class="nav-link active text-dark" href='/login'> Login </a>
         </li>
     <%else%>
-        <li class="nav-item text-dark">
+       <li class="nav-item text-dark">
             <a class="nav-link active text-dark" href='/index'> Home </a>
         </li>
+        <form class="d-flex" action="/results" method="post">
+            <input class="form-control me-2" type="text" name="location" aria-label="Search">
+            <button class="btn btn-light" type="submit" name="search">Search</button>
+        </form>
         <li class="nav-item text-dark">
             <a class="nav-link active text-dark" href='/favorite_restaurants'> Favourite Restaurants </a>
         </li>
