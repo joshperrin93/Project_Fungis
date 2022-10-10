@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/integration/app_spec.rb": {
+      "/Users/ellabastian/Makers/Project_Fungis/spec/integration/app_spec.rb": {
         "lines": [
           1,
           1,
@@ -30,7 +30,15 @@
           1,
           null,
           null,
+<<<<<<< HEAD
           null,
+=======
+          null
+        ]
+      },
+      "/Users/ellabastian/Makers/Project_Fungis/app.rb": {
+        "lines": [
+>>>>>>> c5588e3 (Fixing bug)
           1,
           1,
           1,
@@ -194,7 +202,7 @@
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/restaurant_finder.rb": {
+      "/Users/ellabastian/Makers/Project_Fungis/lib/restaurant_finder.rb": {
         "lines": [
           1,
           1,
@@ -226,14 +234,14 @@
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user.rb": {
+      "/Users/ellabastian/Makers/Project_Fungis/spec/user_repositry_spec.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user_repository.rb": {
+      "/Users/ellabastian/Makers/Project_Fungis/lib/user_repository.rb": {
         "lines": [
           1,
           1,
@@ -327,7 +335,7 @@
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/user_repositry_spec.rb": {
+      "/Users/ellabastian/Makers/Project_Fungis/lib/user.rb": {
         "lines": [
           1,
           null,
