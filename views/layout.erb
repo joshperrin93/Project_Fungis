@@ -16,6 +16,9 @@
     <ul class="nav justify-content-end mb-lg-0">
     <% if session[:user_id] == nil %>
         <li class="nav-item text-dark">
+            <a class="nav-link active text-dark" href='/index'> Home </a>
+        </li>
+        <li class="nav-item text-dark">
           <a class="nav-link active text-dark" href='/signup'> Signup </a>
         </li>
         <li class="nav-item text-dark">
@@ -29,7 +32,7 @@
             <a class="nav-link active text-dark" href='/favorite_restaurants'> Favourite Restaurants </a>
         </li>
         <li class="nav-item text-dark">
-            <form class="d-flex" action='' method='POST'>
+            <form class="d-flex" action='/logout' method='GET'>
                 <input type="submit" value="Log Out">
             </form>
         </li>

@@ -93,7 +93,7 @@ class Application < Sinatra::Base
     return erb(:login)
   end
 
-  post '/logout' do
+  get '/logout' do
     session.clear
     redirect "/login"
   end
