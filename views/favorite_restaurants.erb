@@ -2,7 +2,7 @@
 
 
 <% @all_favorites.each do |restaurant|%>
-
-    <%= restaurant.name %>
-    <a href="/index/<%= restaurant.place_id %>"</a>
+    <div>
+    <a href="/index/<%= restaurant.place_id%>"><%= restaurant.name %></a>
+    </div>
 <%end%>
