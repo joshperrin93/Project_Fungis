@@ -69,13 +69,16 @@ class Application < Sinatra::Base
 
   get '/index/:place_id' do
     place_id = params[:place_id]
-    saved_restaurants = []
+    # saved_restaurants = []
     # session[:saved_restaurants] = place_id
-    saved_restaurants.push(place_id)
-    session[:saved_restaurants] = saved_restaurants
+    # saved_restaurants.push(place_id)
+    session[:place_id] = place_id
     search = RestaurantFinder.new('', place_id)
     @place_info = search.restaurant_info
-    p  saved_restaurants
+
+    session[:name] = @place_info.name
+      # p session[:place_id]
+      # p session[:user_id]
 
     return erb(:more_info)
 
@@ -96,17 +99,21 @@ class Application < Sinatra::Base
     @new_user.email = params[:email]
     add_new_user = UserRepository.new
     add_new_user.create(@new_user)
-    return erb(:signup_success)
+      return erb(:signup_success)
   end
 
   post '/favorite_restaurants' do
+
+      
       favorite = Favorites.new
       repo = Favorites_Repository.new
-      favorite.place_id = params[:place_id]
+      favorite.place_id = session[:place_id]
+      favorite.name = session[:name]
       favorite.user_id =  session[:user_id] 
       @new_favorite = repo.create(favorite)
       @all_favorites =  repo.all
-      p  params[:place_id]
+
+
       return erb(:favorite_restaurants)
 
   end
