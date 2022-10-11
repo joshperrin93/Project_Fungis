@@ -26,7 +26,8 @@
 <img alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
          width=150" height="70">
 
-<h1>Reviews</h1>
+         
+<!-- <h1>Reviews</h1>
 <% @place_info.reviews.each do |review| %>
     <tr>
       <td><%=review.author_name%></td>
@@ -36,10 +37,24 @@
       <br>
     </tr>
 <% end %>
-</table>
+</table> -->
 
 <% if session[:user_id] != nil %>
-<form method = "post" action = "/favorite_restaurants">  
-<input type="submit" value="Save">
+<div>
+
+<div>
+<form method = "post" action = "/index/<%=place.id%>">
+  <label for="review">Leave a review for </label>
+  <br>
+  <textarea id="review_box" name="review" rows="4" cols="50">
+  </textarea> 
+  <br>
+  <input type="submit" value="Submit Review">
 </form>
+
+</div>
+<form method = "post" action = "/favorite_restaurants">  
+<input type="submit" value="Favourite">
+</form>
+</div>
 <%end%>

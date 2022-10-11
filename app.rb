@@ -137,6 +137,11 @@ class Application < Sinatra::Base
       end
   end
 
+  post '/index/:place_id' do
+    p params[:place_id]
+    redirect "/more_info"
+end
+
   private
 
   def sort_by_rating(arg)
