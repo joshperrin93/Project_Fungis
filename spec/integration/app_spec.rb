@@ -75,7 +75,7 @@ describe Application do
         it "returns the login page" do
             response = get("/login")
             expect(response.status).to eq 200
-            expect(response.body).to eq('<h1>Login page</h1>')
+            expect(response.body).to include('<h1>Login page</h1>')
         end
     end
 
@@ -84,6 +84,29 @@ describe Application do
             response = post("/signup_success", email: "ella@makers.com", password: "password!123")
             expect(response.status).to eq 200
             expect(response.body).to include('<input type="password"  name="password" placeholder="Password">')
+        end
+    end
+
+    context "GET /favorite_restaurants" do
+        it "returns the favorite_restuarants page" do
+            response = get("/favorite_restaurants")
+            expect(response.status).to eq 200
+            expect(response.body).to include("")
+        end
+    end
+
+    context "POST /favorite_restaurants" do
+        xit "adds saves a restaurant" do
+            response = post("", favorite = "ChIJaxWqk7UcdkgRjr3dwrPTj8I")
+            expect(response.status).to eq 200
+        end
+    end
+
+    context "POST /index/:place_id" do
+        xit "allows a logged in user to add a comment and rate a recipe" do
+            response = post("/index/#{'ChIJaxWqk7UcdkgRjr3dwrPTj8I'}", rating: 3, review: "Lovely")
+            expect(response.status).to eq 200
+            expect(response.body).to include "Lovely"
         end
     end
 
