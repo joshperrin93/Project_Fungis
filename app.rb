@@ -25,6 +25,10 @@ class Application < Sinatra::Base
     enable :sessions
   end
 
+  get "/" do
+    return erb(:test)
+  end
+
   get '/index' do
     puts logged_in?
     return erb(:index)
@@ -62,8 +66,11 @@ class Application < Sinatra::Base
     @sorted_restaurants = sort_by_rating(restaurants)
     @coordinates = []
     @sorted_restaurants.each {|restaurant| 
-    @coordinates.push([restaurant[5], restaurant[6]])
-}
+      #adding lat, lng and name to new array
+      @coordinates.push([restaurant[5], restaurant[6], restaurant[0]])
+    }
+    p @sorted_restaurants[0][5].class
+    p @sorted_restaurants[0][6].class
     # @coordinates = [{"lat" =>51.5000, "lng" => -0.3333}, {"lat" => 51.509865, "lng" => -0.118092}, {"lat" => 51.485093, "lng" => -0.174936}]
     return erb(:results)
   end

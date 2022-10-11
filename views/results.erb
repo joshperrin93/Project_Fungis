@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +7,8 @@
 <title>Fungis</title>
 <link rel="stylesheet" href="/results.css">
 </head>
-
-
 <body>
-
 <h1>Search results</h1>
-
-<div class="container">
 <table>
   <% @sorted_restaurants.each do |restaurant| %>
     <tr>
@@ -34,55 +28,53 @@
     </tr>
   <% end %>
 </table>
-
-</div>
-
 <div id="map"></div>
 <script async
 src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap">
 </script>
-
-
 <script>
-
 function initMap() {
-
 const centre = {lat: <%=@centre[0]%>, lng: <%=@centre[1]%>}
 map = new google.maps.Map(document.getElementById('map'), {
   center: centre,
   zoom: 11,
   mapId: 'ca5dec382f52fe24'
 });
-
 // const marker = new google.maps.Marker({
 //   position: centre,
 //   map: map,
 // });
 // }
-
 const lng_lat = []
-
 // function coordinates() {
 //   @sorted_restaurants.map(restaurant => {
 //     markers.push({lat: restaurant[5], lng: restaurant[6]})
 //   })
 // };
-
 // let markers = <%=@coordinates%>
-<% @coordinates.each do |lat, lng| %>
-  lng_lat.push({lat: <%=lat%>, lng: <%=lng%>})
+<% @coordinates.each do |lat, lng, name| %>
+  lng_lat.push([{lat: <%=lat%>, lng: <%=lng%>}, name])
 <%end%>
+
+
 
 lng_lat.forEach(marker => {
   marker = new google.maps.Marker({
-  position: marker,
+  position: marker[0],
   map: map,
+});
+marker.addListener("click", () => {
+  infowindow = new google.maps.InfoWindow({
+    content: marker[1],
+  });
+  infowindow.open({
+    anchor: marker,
+    map,
+    shouldFocus: false,
+  });
 });
 })
 }
-
 </script>
-
 </body>
-
 </html>

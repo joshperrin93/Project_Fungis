@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/integration/app_spec.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/integration/app_spec.rb": {
         "lines": [
           1,
           1,
@@ -30,15 +30,7 @@
           1,
           null,
           null,
-<<<<<<< HEAD
           null,
-=======
-          null
-        ]
-      },
-      "/Users/ellabastian/Makers/Project_Fungis/app.rb": {
-        "lines": [
->>>>>>> c5588e3 (Fixing bug)
           1,
           1,
           1,
@@ -117,6 +109,11 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           1,
           null,
@@ -128,6 +125,7 @@
           1,
           null,
           null,
+          1,
           1,
           1,
           null,
@@ -155,6 +153,8 @@
           0,
           null,
           null,
+          1,
+          1,
           1,
           1,
           1,
@@ -170,7 +170,21 @@
           null,
           1,
           1,
+          null,
+          null,
+          null,
           1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
           1,
           1,
           null,
@@ -180,7 +194,32 @@
           null,
           null,
           1,
+          0,
+          0,
+          null,
+          null,
           1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
           null,
           null,
           1,
@@ -191,6 +230,11 @@
           0,
           0,
           0,
+          0,
+          null,
+          0,
+          0,
+          null,
           null,
           null,
           1,
@@ -199,10 +243,23 @@
           21,
           null,
           null,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/restaurant_finder.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/restaurant_finder.rb": {
         "lines": [
           1,
           1,
@@ -234,14 +291,14 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/spec/user_repositry_spec.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user_repository.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user_repository.rb": {
         "lines": [
           1,
           1,
@@ -253,13 +310,13 @@
           9,
           9,
           9,
-          48,
-          48,
-          48,
-          48,
-          48,
+          42,
+          42,
+          42,
+          42,
+          42,
           null,
-          48,
+          42,
           null,
           9,
           null,
@@ -291,6 +348,79 @@
           4,
           null,
           4,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/favorites.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/favorites_repository.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
           null,
           null,
           null
@@ -335,7 +465,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/user_repositry_spec.rb": {
         "lines": [
           1,
           null,
@@ -399,6 +529,6 @@
         ]
       }
     },
-    "timestamp": 1665391461
+    "timestamp": 1665478525
   }
 }
