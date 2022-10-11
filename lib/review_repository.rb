@@ -29,9 +29,9 @@ class ReviewRepository
       sql_params = [
         new_review.place_id,
         new_review.comment,
-        new_review.rating,
+        new_review.rating.to_i,
         new_review.date_posted,
-        new_review.user_id,
+        new_review.user_id.to_i,
         new_review.user_name,
       ]
 
