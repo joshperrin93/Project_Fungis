@@ -12,6 +12,8 @@ require_relative 'lib/user'
 require_relative 'lib/user_repository'
 require_relative 'lib/favorites'
 require_relative 'lib/favorites_repository'
+require_relative 'lib/review'
+require_relative 'lib/review_repository'
 
 
 
@@ -26,7 +28,7 @@ class Application < Sinatra::Base
   end
 
   get '/index' do
-    puts logged_in?
+    # puts logged_in?
     return erb(:index)
   end
 
@@ -69,6 +71,7 @@ class Application < Sinatra::Base
   end
 
   get '/index/:place_id' do
+    repo = ReviewRepository.new
     place_id = params[:place_id]
     # saved_restaurants = []
     # session[:saved_restaurants] = place_id
@@ -80,7 +83,11 @@ class Application < Sinatra::Base
     session[:name] = @place_info.name
       # p session[:place_id]
       # p session[:user_id]
-
+      all_reviews = repo.all
+      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+      p "++++++++++++++++++"
+      p @reviews_for_place
+      p "++++++++++++++++++"
     return erb(:more_info)
 
   end
@@ -138,8 +145,20 @@ class Application < Sinatra::Base
   end
 
   post '/index/:place_id' do
-    p params[:place_id]
-    redirect "/more_info"
+    place_id = params[:place_id]
+    search = RestaurantFinder.new('', place_id)
+    @place_info = search.restaurant_info
+    review = Review.new
+    repo = ReviewRepository.new
+    time = Time.new
+    review.comment = params[:review]
+    review.rating = params[:rating]
+    review.place_id = params[:place_id]
+    review.date_posted = time.inspect
+    review.user_id = session[:user_id]
+    review.user_name = session[:user_name]
+    repo.create(review)
+    redirect "/index/#{session[:place_id]}"
 end
 
   private

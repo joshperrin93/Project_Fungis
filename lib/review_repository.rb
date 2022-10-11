@@ -15,15 +15,16 @@ class ReviewRepository
             review.rating = record['rating']
             review.date_posted = record['date_posted']
             review.user_id = record['user_id']
+            review.user_name = record['user_name']
 
-            @reviews << reviews
+            @reviews << review
         end
     return @reviews
     end
 
     def create(new_review)
-      sql = 'INSERT INTO reviews (place_id, comment, rating, date_posted, user_id)
-                VALUES($1, $2, $3, $4, $5);
+      sql = 'INSERT INTO reviews (place_id, comment, rating, date_posted, user_id, user_name)
+                VALUES($1, $2, $3, $4, $5, $6);
             '
       sql_params = [
         new_review.place_id,
@@ -31,6 +32,7 @@ class ReviewRepository
         new_review.rating,
         new_review.date_posted,
         new_review.user_id,
+        new_review.user_name,
       ]
 
       result_set = DatabaseConnection.exec_params(sql, sql_params)

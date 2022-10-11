@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/integration/app_spec.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/spec/integration/app_spec.rb": {
         "lines": [
           1,
           1,
@@ -30,15 +30,7 @@
           1,
           null,
           null,
-<<<<<<< HEAD
           null,
-=======
-          null
-        ]
-      },
-      "/Users/ellabastian/Makers/Project_Fungis/app.rb": {
-        "lines": [
->>>>>>> c5588e3 (Fixing bug)
           1,
           1,
           1,
@@ -104,7 +96,7 @@
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/app.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/app.rb": {
         "lines": [
           1,
           1,
@@ -117,6 +109,13 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           1,
           null,
@@ -129,6 +128,7 @@
           null,
           null,
           1,
+          null,
           1,
           null,
           null,
@@ -155,6 +155,8 @@
           0,
           null,
           null,
+          1,
+          1,
           1,
           1,
           1,
@@ -171,6 +173,25 @@
           1,
           1,
           1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          28,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
           1,
           1,
           null,
@@ -180,10 +201,57 @@
           null,
           null,
           1,
-          1,
+          0,
+          0,
           null,
           null,
           1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -199,10 +267,23 @@
           21,
           null,
           null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/restaurant_finder.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/restaurant_finder.rb": {
         "lines": [
           1,
           1,
@@ -234,14 +315,14 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/spec/user_repositry_spec.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/user.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user_repository.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/user_repository.rb": {
         "lines": [
           1,
           1,
@@ -253,13 +334,13 @@
           9,
           9,
           9,
-          48,
-          48,
-          48,
-          48,
-          48,
+          70,
+          70,
+          70,
+          70,
+          70,
           null,
-          48,
+          70,
           null,
           9,
           null,
@@ -296,7 +377,142 @@
           null
         ]
       },
-      "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/restaurant_finder_spec.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/favorites.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/favorites_repository.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/review.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/kevwemakers/Projects/Project_Fungis/lib/review_repository.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          27,
+          null,
+          27,
+          null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/kevwemakers/Projects/Project_Fungis/spec/restaurant_finder_spec.rb": {
         "lines": [
           1,
           null,
@@ -335,7 +551,7 @@
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user.rb": {
+      "/Users/kevwemakers/Projects/Project_Fungis/spec/user_repositry_spec.rb": {
         "lines": [
           1,
           null,
@@ -399,6 +615,6 @@
         ]
       }
     },
-    "timestamp": 1665391461
+    "timestamp": 1665497929
   }
 }
