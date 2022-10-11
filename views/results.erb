@@ -6,13 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Fungis</title>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/results.css">
 </head>
 
 
 <body>
 
 <h1>Search results</h1>
+
+<div class="container">
 <table>
   <% @sorted_restaurants.each do |restaurant| %>
     <tr>
@@ -32,6 +34,8 @@
     </tr>
   <% end %>
 </table>
+
+</div>
 
 <div id="map"></div>
 <script async

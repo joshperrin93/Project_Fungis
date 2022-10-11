@@ -1,0 +1,52 @@
+
+body {
+    padding: 0;
+    margin: 0;
+    /* display: flex;
+    position: relative; */
+}
+
+/* .navbar {
+    position:absolute;
+    flex-direction: row;
+    width: 100%;
+    margin: 20px;
+    height: 20px;
+
+} */
+
+h1 {
+    color: green;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px;
+}
+
+.container {
+    margin: 0 auto;
+  
+}
+
+
+table {
+    font-size: 1rem;
+}
+
+tr {
+    display: inline-block;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    margin: 1.5rem;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+ 
+  }
+
+  td {
+    display: block;
+  }
+
+
+#map {
+    height: 70vh;
+ }
