@@ -67,6 +67,12 @@
 </form>
 
 </div>
+<% flash.keys.each do |type| %>
+	<div data-alert class=“flash <%= type %> alert-box radius”>
+    <%= flash[type] %>
+  </div>
+<% end %>
+
 <form method = "post" action = "/favorite_restaurants">  
 <input type="submit" value="Favourite">
 </form>

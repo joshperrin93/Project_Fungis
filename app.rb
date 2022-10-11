@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 require "uri"
 require "net/http"
 require 'google_places'
@@ -24,6 +25,7 @@ class Application < Sinatra::Base
   # without having to restart the server.
   configure :development do
     register Sinatra::Reloader
+    register Sinatra::Flash
     enable :sessions
   end
 
@@ -137,7 +139,13 @@ class Application < Sinatra::Base
       favorite.user_id =  session[:user_id] 
       @new_favorite = repo.create(favorite)
       if @new_favorite == false
-        return erb(:index)
+        flash[:error] = "Already liked this restaurant"
+        search = RestaurantFinder.new('', favorite.place_id)
+        @place_info = search.restaurant_info
+        repo = ReviewRepository.new
+        all_reviews = repo.all
+        @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+        return erb(:more_info)
       else 
         @all_favorites =  repo.user_favorite(favorite.user_id)
         return erb(:favorite_restaurants)
