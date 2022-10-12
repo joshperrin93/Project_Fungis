@@ -7,7 +7,7 @@
     <td>Phone number: <%=@place_info.formatted_phone_number%></td>
   </tr>
   <tr>
-    <td>Website: <%=@place_info.website%></td>
+    <td>Website: <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
   </tr>
   <tr>
     <td>Opening hours: <%=@place_info.opening_hours['weekday_text']%></td>
