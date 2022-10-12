@@ -67,6 +67,15 @@ class ReviewRepository
       return @reviews
     end
 
+    def delete(id)
+      sql = "DELETE FROM reviews WHERE id = $1;"
+      sql_params = [id]
+
+      DatabaseConnection.exec_params(sql, sql_params)
+
+      return nil
+    end
+
   
 
 end

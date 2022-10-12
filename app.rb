@@ -176,12 +176,11 @@ end
     place_id = params[:place_id]
     # review = params[:delete_review]
     p "----------------------------------"
-    p params[:delete_review]
     p params
     p "----------------------------------"
     repo = ReviewRepository.new
-    # p review = repo.find_by_review_id(review_id)
-    return erb(:index)
+    repo.delete(params[:user_id])
+    redirect "/index/#{session[:place_id]}"
   end
 
   private
@@ -190,13 +189,17 @@ end
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
+
+helpers do
   def logged_in?
-    if session[:user_id] == nil
-      return false  
-   else
-      return true
-   end 
+    return session[:user_id] != nil
   end
+
+  def reviews_author?
+    review = Review.new
+    return session[:user_id] == review.user_id
+  end  
+end 
  
 
 
