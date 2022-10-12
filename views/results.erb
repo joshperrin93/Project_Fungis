@@ -54,22 +54,21 @@ map = new google.maps.Map(document.getElementById('map'), {
   mapId: 'ca5dec382f52fe24'
 });
 
-    var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 200,
+  });
 
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i]["lat"], locations[i]["lng"]),
-        map: map
+        map: map,
       });
-
-      const contentString = 
-      '<h1 id="firstHeading" class="firstHeading">locations[i]["name"]</h1>'
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i]["name"] + ' ' + locations[i]["address"]);
+          infowindow.setContent("<b>Name: </b>" + locations[i]["name"] + "<br /><b>Address: </b>" + locations[i]["address"]);
           infowindow.open(map, marker);
         }
       })(marker, i));
