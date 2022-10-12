@@ -6,15 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Fungis</title>
-<link rel="stylesheet" href="/results.css">
+<link rel="stylesheet" href="/style.css">
 </head>
 
 
 <body>
 
 <h1>Search results</h1>
-
-<div class="container">
 <table>
   <% @sorted_restaurants.each do |restaurant| %>
     <tr>
@@ -35,8 +33,6 @@
   <% end %>
 </table>
 
-</div>
-
 <div id="map"></div>
 <script async
 src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap">
@@ -47,6 +43,8 @@ src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap"
 
 function initMap() {
 
+var locations = JSON.parse(`<%= @info_bubbles.to_json %>`);
+
 const centre = {lat: <%=@centre[0]%>, lng: <%=@centre[1]%>}
 map = new google.maps.Map(document.getElementById('map'), {
   center: centre,
@@ -54,31 +52,25 @@ map = new google.maps.Map(document.getElementById('map'), {
   mapId: 'ca5dec382f52fe24'
 });
 
-// const marker = new google.maps.Marker({
-//   position: centre,
-//   map: map,
-// });
-// }
+    var infowindow = new google.maps.InfoWindow({
+      maxWidth: 200,
+  });
 
-const lng_lat = []
+    var marker, i;
 
-// function coordinates() {
-//   @sorted_restaurants.map(restaurant => {
-//     markers.push({lat: restaurant[5], lng: restaurant[6]})
-//   })
-// };
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i]["lat"], locations[i]["lng"]),
+        map: map,
+      });
 
-// let markers = <%=@coordinates%>
-<% @coordinates.each do |lat, lng| %>
-  lng_lat.push({lat: <%=lat%>, lng: <%=lng%>})
-<%end%>
-
-lng_lat.forEach(marker => {
-  marker = new google.maps.Marker({
-  position: marker,
-  map: map,
-});
-})
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent("<b>Name: </b>" + locations[i]["name"] + "<br /><b>Address: </b>" + locations[i]["address"]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
 }
 
 </script>
