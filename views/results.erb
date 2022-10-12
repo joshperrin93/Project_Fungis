@@ -43,11 +43,16 @@ src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap"
 
 function initMap() {
 
-var locations = `<%= @sorted_restaurants %>`
+var locations = JSON.parse(`<%= @info_bubbles.to_json %>`);
+// var locations1 = `<%= @sorted_restaurants %>`
+
+// console.log(JSON.parse(locations))
+// console.log(locations1)
+
 
 const centre = {lat: <%=@centre[0]%>, lng: <%=@centre[1]%>}
 map = new google.maps.Map(document.getElementById('map'), {
-  center: new google.maps.LatLng(0, 0),
+  center: centre,
   zoom: 11,
   mapId: 'ca5dec382f52fe24'
 });
@@ -57,16 +62,24 @@ map = new google.maps.Map(document.getElementById('map'), {
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {
+      console.log(locations[i])
+      console.log(locations[i])
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(0, 0),
+        position: new google.maps.LatLng(locations[i]["lat"], locations[i]["lng"]),
         map: map
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations);
+          infowindow.setContent(locations[i]["name"]);
           infowindow.open(map, marker);
         }
       })(marker, i));
     }
 }
+
+</script>
+
+</body>
+
+</html>
