@@ -16,8 +16,6 @@ require_relative 'lib/favorites_repository'
 require_relative 'lib/review'
 require_relative 'lib/review_repository'
 
-
-
 DatabaseConnection.connect
 
 class Application < Sinatra::Base
@@ -34,7 +32,6 @@ class Application < Sinatra::Base
   end
 
   get '/index' do
-    # puts logged_in?
     return erb(:index)
   end
 
@@ -71,30 +68,19 @@ class Application < Sinatra::Base
     @centre = results.first.coordinates
     @sorted_restaurants = sort_by_rating(restaurants)
     @info_bubbles = search.info_bubble(@sorted_restaurants)
-    p @info_bubbles
     return erb(:results)
   end
 
   get '/index/:place_id' do
     repo = ReviewRepository.new
     place_id = params[:place_id]
-    # saved_restaurants = []
-    # session[:saved_restaurants] = place_id
-    # saved_restaurants.push(place_id)
     session[:place_id] = place_id
     search = RestaurantFinder.new('', place_id)
     @place_info = search.restaurant_info
-
     session[:name] = @place_info.name
-      # p session[:place_id]
-      # p session[:user_id]
-      all_reviews = repo.all
-      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
-      p "++++++++++++++++++"
-      p @reviews_for_place
-      p "++++++++++++++++++"
+    all_reviews = repo.all
+    @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
     return erb(:more_info)
-
   end
 
   get '/signup' do
@@ -125,12 +111,13 @@ class Application < Sinatra::Base
     @new_user.password = params[:password]
     @new_user.email = params[:email]
     add_new_user.create(@new_user)
-      return erb(:signup_success)
+    return erb(:signup_success)
   end
 
   get '/favorite_restaurants' do
     repo = Favorites_Repository.new
-    @all_favorites =  repo.all
+    user = session[:user_id]
+    @all_favorites = repo.user_favorite(user)
     return erb(:favorite_restaurants)
   end
 
@@ -181,14 +168,8 @@ end
   def logged_in?
     if session[:user_id] == nil
       return false  
-   else
+    else
       return true
-   end 
+    end 
   end
- 
-
-
-
-
-
 end
