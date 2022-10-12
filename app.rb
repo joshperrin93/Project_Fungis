@@ -42,14 +42,16 @@ class Application < Sinatra::Base
 
     if user == false
       # If user doesn't exist according to #find_by_email
-      return erb(:login_failure)
+      flash[:error] = "Email does not exist, go to sign up page or use another email."
+      redirect '/login'
     elsif user.password == password && user.email == email
       # If user exists, save user.id to current session, save user.name to current session
       session[:user_id] = user.id
       session[:user_name] = user.name
       return redirect("/index")
     elsif user.password != password && user.email == email
-      return erb(:login_failure)
+      flash[:error] = "Incorrect password"
+      redirect '/login'
     end
   end
 
