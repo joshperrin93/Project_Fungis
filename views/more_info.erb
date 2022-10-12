@@ -10,7 +10,7 @@
     <td>Website: <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
   </tr>
   <tr>
-    <td>Opening hours: <%=@place_info.opening_hours['weekday_text']%></td>
+    <td>Opening hours: <%=@place_info.opening_hours['weekday_text'].join(", ")%></td>
   </tr>
   <tr>
     <td>Opening now: <%=@place_info.opening_hours['open_now']%></td>
@@ -30,13 +30,12 @@
          <h1>Reviews</h1>
          <% @reviews_for_place.each do |review|  %>
              <tr>
-               <td><%=review.comment%></td>
+               <td>Name: <%=review.user_name%></td>
+               <td>Date: <%=review.date_posted%></td>
                <br>
-               <td><%=review.rating%></td>
+               <td>Review: <%=review.comment%></td>
                <br>
-               <td><%=review.date_posted%></td>
-               <br>
-               <td><%=review.user_name%></td>
+               <td>Rating: <%=review.rating%>/5</td>
                <br>
          
          <% end %>
