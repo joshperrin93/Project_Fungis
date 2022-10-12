@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 require "uri"
 require "net/http"
 require 'google_places'
@@ -12,6 +13,8 @@ require_relative 'lib/user'
 require_relative 'lib/user_repository'
 require_relative 'lib/favorites'
 require_relative 'lib/favorites_repository'
+require_relative 'lib/review'
+require_relative 'lib/review_repository'
 
 
 
@@ -22,6 +25,7 @@ class Application < Sinatra::Base
   # without having to restart the server.
   configure :development do
     register Sinatra::Reloader
+    register Sinatra::Flash
     enable :sessions
   end
 
@@ -30,7 +34,7 @@ class Application < Sinatra::Base
   end
 
   get '/index' do
-    puts logged_in?
+    # puts logged_in?
     return erb(:index)
   end
 
@@ -42,14 +46,16 @@ class Application < Sinatra::Base
 
     if user == false
       # If user doesn't exist according to #find_by_email
-      return erb(:login_failure)
+      flash[:error] = "Email does not exist, go to sign up page or use another email."
+      redirect '/login'
     elsif user.password == password && user.email == email
       # If user exists, save user.id to current session, save user.name to current session
       session[:user_id] = user.id
       session[:user_name] = user.name
       return redirect("/index")
     elsif user.password != password && user.email == email
-      return erb(:login_failure)
+      flash[:error] = "Incorrect password"
+      redirect '/login'
     end
   end
 
@@ -70,6 +76,7 @@ class Application < Sinatra::Base
   end
 
   get '/index/:place_id' do
+    repo = ReviewRepository.new
     place_id = params[:place_id]
     # saved_restaurants = []
     # session[:saved_restaurants] = place_id
@@ -81,7 +88,11 @@ class Application < Sinatra::Base
     session[:name] = @place_info.name
       # p session[:place_id]
       # p session[:user_id]
-
+      all_reviews = repo.all
+      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+      p "++++++++++++++++++"
+      p @reviews_for_place
+      p "++++++++++++++++++"
     return erb(:more_info)
 
   end
@@ -131,12 +142,35 @@ class Application < Sinatra::Base
       favorite.user_id =  session[:user_id] 
       @new_favorite = repo.create(favorite)
       if @new_favorite == false
-        return erb(:index)
+        flash[:error] = "Already liked this restaurant"
+        search = RestaurantFinder.new('', favorite.place_id)
+        @place_info = search.restaurant_info
+        repo = ReviewRepository.new
+        all_reviews = repo.all
+        @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+        return erb(:more_info)
       else 
         @all_favorites =  repo.user_favorite(favorite.user_id)
         return erb(:favorite_restaurants)
       end
   end
+
+  post '/index/:place_id' do
+    place_id = params[:place_id]
+    search = RestaurantFinder.new('', place_id)
+    @place_info = search.restaurant_info
+    review = Review.new
+    repo = ReviewRepository.new
+    time = Time.new
+    review.comment = params[:review]
+    review.rating = params[:rating]
+    review.place_id = params[:place_id]
+    review.date_posted = time.inspect
+    review.user_id = session[:user_id]
+    review.user_name = session[:user_name]
+    repo.create(review)
+    redirect "/index/#{session[:place_id]}"
+end
 
   private
 

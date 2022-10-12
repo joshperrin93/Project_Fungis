@@ -7,10 +7,10 @@
     <td>Phone number: <%=@place_info.formatted_phone_number%></td>
   </tr>
   <tr>
-    <td>Website: <%=@place_info.website%></td>
+    <td>Website: <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
   </tr>
   <tr>
-    <td>Opening hours: <%=@place_info.opening_hours['weekday_text']%></td>
+    <td>Opening hours: <%=@place_info.opening_hours['weekday_text'].join(", ")%></td>
   </tr>
   <tr>
     <td>Opening now: <%=@place_info.opening_hours['open_now']%></td>
@@ -26,20 +26,49 @@
 <img alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
          width=150" height="70">
 
-<h1>Reviews</h1>
-<% @place_info.reviews.each do |review| %>
-    <tr>
-      <td><%=review.author_name%></td>
-      <br>
-      <td><%=review.text%></td>
-      <br>
-      <br>
-    </tr>
-<% end %>
-</table>
+         
+         <h1>Reviews</h1>
+         <% @reviews_for_place.each do |review|  %>
+             <tr>
+               <td>Name: <%=review.user_name%></td>
+               <td>Date: <%=review.date_posted%></td>
+               <br>
+               <td>Review: <%=review.comment%></td>
+               <br>
+               <td>Rating: <%=review.rating%>/5</td>
+               <br>
+         
+         <% end %>
+
 
 <% if session[:user_id] != nil %>
-<form method = "post" action = "/favorite_restaurants">  
-<input type="submit" value="Save">
+<div>
+
+<div>
+<form method = "post" action = "/index/<%=session[:place_id]%>">
+  <label for="review">Leave a review for </label>
+  <br>
+  <textarea id="review_box" name="review" rows="4" cols="50">
+  </textarea> 
+  <br>
+  <label for="pet-select">How do you rate <%=@place_info.name%></label>
+
+<select required name="rating" id="rating">
+    <option value="" disabled selected>--Please choose an option--</option>
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+</select>
+<br>
+  <input type="submit" value="Submit Review">
 </form>
+
+</div>
+
+<form method = "post" action = "/favorite_restaurants">  
+<input type="submit" value="Favourite">
+</form>
+</div>
 <%end%>
