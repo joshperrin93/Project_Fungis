@@ -42,10 +42,31 @@ class ReviewRepository
       sql = "SELECT place_id FROM reviews WHERE user_id = $1;"
       result_set = DatabaseConnection.exec_params(sql, [user_id])
   
-      # calls '#all method' to populate global @users array with test users.
+      # calls '#all method' to populate global @reviews array with test reviews.
       all
-      return false unless @reviews.any? { |review| review.place_id == place_id }
-      
+      return false unless @reviews.any? { |review| review.place_id == place_id } 
     end
+
+    def find_by_review_id(id)
+      @reviews = []
+      sql = "SELECT * FROM reviews WHERE id = $1;"
+      result_set = DatabaseConnection.exec_params(sql, [id])
+  
+      result_set.each do |record|
+        review = Review.new
+        review.id = record['id'].to_i
+        review.place_id = record['place_id']
+        review.comment = record['comment']
+        review.rating = record['rating'].to_i
+        review.date_posted = record['date_posted']
+        review.user_id = record['user_id'].to_i
+        review.user_name = record['user_name']
+
+        @reviews << review
+      end
+      return @reviews
+    end
+
+  
 
 end

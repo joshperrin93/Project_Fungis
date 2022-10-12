@@ -89,9 +89,9 @@ class Application < Sinatra::Base
       # p session[:user_id]
       all_reviews = repo.all
       @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
-      p "++++++++++++++++++"
-      p @reviews_for_place
-      p "++++++++++++++++++"
+      # p "++++++++++++++++++"
+      # p @reviews_for_place
+      # p "++++++++++++++++++"
     return erb(:more_info)
 
   end
@@ -168,8 +168,21 @@ class Application < Sinatra::Base
     review.user_id = session[:user_id]
     review.user_name = session[:user_name]
     repo.create(review)
+    # p "----------------------------------"
     redirect "/index/#{session[:place_id]}"
 end
+
+  post '/index/:place_id/delete' do
+    place_id = params[:place_id]
+    # review = params[:delete_review]
+    p "----------------------------------"
+    p params[:delete_review]
+    p params
+    p "----------------------------------"
+    repo = ReviewRepository.new
+    # p review = repo.find_by_review_id(review_id)
+    return erb(:index)
+  end
 
   private
 
