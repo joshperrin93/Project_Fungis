@@ -64,15 +64,8 @@ class Application < Sinatra::Base
     results = Geocoder.search(location)
     @centre = results.first.coordinates
     @sorted_restaurants = sort_by_rating(restaurants)
-    @coordinates = []
-    @sorted_restaurants.each {|restaurant| 
-      #adding lat, lng and name to new array
-      @coordinates.push([restaurant[5], restaurant[6]])
-    }
     @info_bubbles = search.info_bubble(@sorted_restaurants)
-    p @info_bubbles[0].class
-    p @info_bubbles.class
-    # @coordinates = [{"lat" =>51.5000, "lng" => -0.3333}, {"lat" => 51.509865, "lng" => -0.118092}, {"lat" => 51.485093, "lng" => -0.174936}]
+    p @info_bubbles
     return erb(:results)
   end
 

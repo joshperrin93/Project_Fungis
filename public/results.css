@@ -50,3 +50,7 @@ tr {
 #map {
     height: 70vh;
  }
+
+.bubble {
+    color: green;
+}

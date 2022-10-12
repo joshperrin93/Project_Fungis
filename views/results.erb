@@ -44,11 +44,8 @@ src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap"
 function initMap() {
 
 var locations = JSON.parse(`<%= @info_bubbles.to_json %>`);
-// var locations1 = `<%= @sorted_restaurants %>`
 
-// console.log(JSON.parse(locations))
-// console.log(locations1)
-
+console.log(locations)
 
 const centre = {lat: <%=@centre[0]%>, lng: <%=@centre[1]%>}
 map = new google.maps.Map(document.getElementById('map'), {
@@ -62,16 +59,17 @@ map = new google.maps.Map(document.getElementById('map'), {
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {
-      console.log(locations[i])
-      console.log(locations[i])
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i]["lat"], locations[i]["lng"]),
         map: map
       });
 
+      const contentString = 
+      '<h1 id="firstHeading" class="firstHeading">locations[i]["name"]</h1>'
+
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i]["name"]);
+          infowindow.setContent(locations[i]["name"] + ' ' + locations[i]["address"]);
           infowindow.open(map, marker);
         }
       })(marker, i));

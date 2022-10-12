@@ -29,7 +29,8 @@ class RestaurantFinder
             hash = {
                 "name" => item[0],
                 "lat" => item[5],
-                "lng" => item[6]
+                "lng" => item[6],
+                "address" => item[1]
             }
             info_bubble << hash
         end
