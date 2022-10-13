@@ -1,83 +1,120 @@
-<h1>More info on <%=@place_info.name%></h1>
-<table>
-  <tr>
-    <td>Address: <%=@place_info.formatted_address%></td>
-  </tr>
-  <tr>
-    <td>Phone number: <%=@place_info.formatted_phone_number%></td>
-  </tr>
-  <tr>
-    <td>Website: <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
-  </tr>
-  <tr>
-    <td>Opening hours:
-              <%@place_info.opening_hours['weekday_text'].each do |day| %>
-                <p><%= day %></p>
-              <%end%></td> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=@place_info.name%></title>
+    <link rel="stylesheet" href="/more_info.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <div class="body_not_navbar">
 
-  </tr>
-  <tr>
-    <td>Opening now: <%=@place_info.opening_hours['open_now']%></td>
-  </tr>
-</table>
+    <div class= "header">
+      <h1>More info on <%=@place_info.name%></h1>
+    </div>
 
-<img alt=<%=@place_info.name%> src=<%=@place_info.photos[0].fetch_url(800)%>
-         width=150" height="70">
-<img alt=<%=@place_info.name%> src=<%=@place_info.photos[1].fetch_url(800)%>
-         width=150" height="70">
-<img alt=<%=@place_info.name%> src=<%=@place_info.photos[2].fetch_url(800)%>
-         width=150" height="70">
-<img alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
-         width=150" height="70">
-
-         
-         <h1>Reviews</h1>
-         <% @reviews_for_place.map do |review|  %>
-             <tr>
-               <td>Name: <%=review.user_name%></td>
-               <td>Date: <%=review.date_posted%></td>
-               <br>
-               <td>Review: <%=review.comment%></td>
-               <br>
-               <td>Rating: <%=review.rating%>/5</td>
-               <br>
-               <% if reviews_author?(review) %>
-                <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
-                    <label for="Delete Review">Delete</label>
-                    <button name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
-                </form>
-              <%end%> 
-         <%end%>
-
-
-<% if session[:user_id] != nil %>
-<div>
-
-<div>
-<form method = "post" action = "/index/<%=session[:place_id]%>">
-  <label for="review">Leave a review for </label>
+ <div class= "place_info"> 
+  <table>
+      <tr>
+        <td><strong>Address:</strong> <%=@place_info.formatted_address%></td>
+      </tr>
+      <tr>
+        <td><strong>Phone number:</strong> <%=@place_info.formatted_phone_number%></td>
+      </tr>
+      <tr>
+        <td><strong>Website:</strong> <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
+      </tr>
+      <tr>
+        <td><strong>      <br>Opening hours:</strong>
+                  <%@place_info.opening_hours['weekday_text'].each do |day| %>
+                    <p><%= day %></p>
+                  <%end%></td> 
+      </tr>
+      <tr>
+        <td><strong>Open now:</strong> <%=@place_info.opening_hours['open_now']%></td>
+      </tr>
+    </table>
+  </div>
   <br>
-  <textarea id="review_box" name="review" rows="4" cols="50">
-  </textarea> 
-  <br>
-  <label for="pet-select">How do you rate <%=@place_info.name%></label>
 
-<select required name="rating" id="rating">
-    <option value="" disabled selected>--Please choose an option--</option>
-    <option value=1>1</option>
-    <option value=2>2</option>
-    <option value=3>3</option>
-    <option value=4>4</option>
-    <option value=5>5</option>
-</select>
+  <% if session[:user_id] != nil %>
+    <div>
+    <form method = "post" action = "/favorite_restaurants">  
+      <input class="btn" type="submit" value="Favourite this restaurant">
+    </form>
+    </div>
+  <%end%>
+
+  <br>
+  <br>
+
+  <div class= "photos">
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[0].fetch_url(800)%>
+            width=150" height="70">
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[1].fetch_url(800)%>
+            width=150" height="70">
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[2].fetch_url(800)%>
+            width=150" height="70">
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
+            width=150" height="70">
+  </div>
+  <br>
+  <br>
+  <div class= "">   
+    <h1>Reviews</h1>
+    <div class= "card">  
+    <% @reviews_for_place.map do |review|  %>
+        <tr>
+          <td> <div class = "card-header"> <strong><%=review.user_name%></strong></td>
+          <td>on <%=review.date_posted%></div></td>
+          <br>
+          <td>Review: <%=review.comment%> </td>
+          <br>
+          <td>Rating: <%=review.rating%>/5</td>
+          <br>
+          <br>
+          <% if reviews_author?(review) %>
+          <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
+              <label for="Delete Review"></label>
+              <button class="btn btn-outline-success" name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
+          </form>
+          <br>
+        <%end%> 
+    <%end%>
+    </div>
+  </div>
+
 <br>
-  <input type="submit" value="Submit Review">
-</form>
-
-</div>
-
-<form method = "post" action = "/favorite_restaurants">  
-  <input type="submit" value="Favourite">
-</form>
-</div>
-<%end%>
+<% if session[:user_id] != nil %>
+<div class= "">
+  <div>
+  <form method = "post" action = "/index/<%=session[:place_id]%>">
+    <label for="review">Leave a review for <%=@place_info.name%>: </label>
+    <br>
+    <textarea id="review_box" name="review" rows="6" cols="60">
+    </textarea> 
+    <br>
+    <label for="pet-select">How do you rate <%=@place_info.name%>?</label>
+  <br>
+  <select required name="rating" id="rating">
+      <option value="" disabled selected>--Please choose an option?--</option>
+      <option value=1>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+  </select>
+  <br>
+  <br>
+    <input type="submit" value="Submit Review" class="btn btn-outline-success">
+  </form>
+  <br>
+  </div>
+  <%end%>
+  </div>
+</body>
