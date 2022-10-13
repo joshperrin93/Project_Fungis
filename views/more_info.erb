@@ -40,14 +40,12 @@
                <br> 
                <p>Review user_id: <%= review.user_id%></p>
                <p>Session user_id: <%= session[:user_id]%></p>
-                 <% if logged_in? %>
-                    <% if reviews_author? %> 
-                    <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
-                        <label for="Delete Review">Delete</label>
-                        <button name= "user_id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
-                    </form>
-                    <%end%> 
-                 <%end%> 
+               <% if reviews_author?(review) %>
+                <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
+                    <label for="Delete Review">Delete</label>
+                    <button name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
+                </form>
+              <%end%> 
          
          <%end%>
 

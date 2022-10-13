@@ -179,7 +179,7 @@ end
     p params
     p "----------------------------------"
     repo = ReviewRepository.new
-    repo.delete(params[:user_id])
+    repo.delete(params[:id])
     redirect "/index/#{session[:place_id]}"
   end
 
@@ -195,11 +195,14 @@ helpers do
     return session[:user_id] != nil
   end
 
-  def reviews_author?
-    review = Review.new
-    return session[:user_id] == review.user_id
+  def reviews_author?(review)
+    # review = Review.new
+    p "at this point --------------------------"
+    p review.user_id
+    p session[:user_id]
+    return session[:user_id] == review.user_id.to_i
   end  
-end 
+end
  
 
 
