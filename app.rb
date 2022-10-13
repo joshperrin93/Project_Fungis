@@ -156,6 +156,18 @@ class Application < Sinatra::Base
     review.user_id = session[:user_id]
     review.user_name = session[:user_name]
     repo.create(review)
+    # p "----------------------------------"
+    redirect "/index/#{session[:place_id]}"
+  end
+
+  post '/index/:place_id/delete' do
+    place_id = params[:place_id]
+    # review = params[:delete_review]
+    p "----------------------------------"
+    p params
+    p "----------------------------------"
+    repo = ReviewRepository.new
+    repo.delete(params[:id])
     redirect "/index/#{session[:place_id]}"
   end
 
@@ -165,11 +177,15 @@ class Application < Sinatra::Base
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
-  def logged_in?
-    if session[:user_id] == nil
-      return false  
-    else
-      return true
-    end 
+
+helpers do
+    def logged_in?
+      return session[:user_id] != nil
+    end
+
+    def reviews_author?(review)
+      return session[:user_id] == review.user_id.to_i
+    end  
   end
+ 
 end
