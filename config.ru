@@ -1,3 +1,3 @@
 # file: config.ru
 require './app'
-run Application
+run Sinatra::Application
