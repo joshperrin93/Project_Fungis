@@ -51,11 +51,12 @@
 </nav> 
 
     <% flash.keys.each do |type| %>
-      <div data-alert class=“flash <%= type %> alert-box radius”>
+      <div class="alert alert-danger" data-alert class=“flash <%= type %> alert-box radius”>
         <%= flash[type] %>
       </div>
     <% end %>
 
     <%= yield %>
+
   </body>
 </html>
