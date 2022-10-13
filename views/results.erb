@@ -6,13 +6,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Fungis</title>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/results.css">
 </head>
 
 
 <body>
 
-<h1>Search results</h1>
+<div class="results-container">
+
+<h1>Search Results</h1>
+
+</div>
+
+
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap">
+</script>
+<div id="map"></div>
+
+<div class="table-container">
+
 <table>
   <% @sorted_restaurants.each do |restaurant| %>
     <tr>
@@ -27,17 +41,13 @@
           width="150" height="70"></td>
       <% end %>
       <td><form action="/index/<%=restaurant[4]%>" method="GET">
-        <input type="submit" value="More info">
+        <input  class="table-btn" type="submit" value="More info">
       </form></td>
     </tr>
   <% end %>
 </table>
 
-<div id="map"></div>
-<script async
-src="https://maps.googleapis.com/maps/api/js?key=<%=$api_key%>&callback=initMap">
-</script>
-
+</div>
 
 <script>
 
