@@ -4,15 +4,55 @@ body {
     box-sizing: border-box;
 }
 
-form  {
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.title {
+    transform: translateY(180px);
+}
+
+.form-container {
+
+    background-image: url("salad.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 100px auto;
     flex-wrap: wrap;
-    width: 700px;
+    width: 400px;
     height: 400px;
-    border: 1px solid #A9A9A9;
-    box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .1);
-   
-  }
+
+}
+
+input {
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+}
+
+input.btn {
+    display: block;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color:  #9EF01A;
+}
+
+
+
+.btn {
+   margin: 0 auto;
+   padding: 10px;
+   border: 1px solid #d3d3d3;
+   background-color:  #9EF01A;
+}
+
+input.btn:hover {
+    background-color: #198754;
+}
+

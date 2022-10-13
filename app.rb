@@ -122,24 +122,24 @@ class Application < Sinatra::Base
   end
 
   post '/favorite_restaurants' do
-      favorite = Favorites.new
-      repo = Favorites_Repository.new
-      favorite.place_id = session[:place_id]
-      favorite.name = session[:name]
-      favorite.user_id =  session[:user_id] 
-      @new_favorite = repo.create(favorite)
-      if @new_favorite == false
-        flash[:error] = "Already liked this restaurant"
-        search = RestaurantFinder.new('', favorite.place_id)
-        @place_info = search.restaurant_info
-        repo = ReviewRepository.new
-        all_reviews = repo.all
-        @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
-        return erb(:more_info)
-      else 
-        @all_favorites =  repo.user_favorite(favorite.user_id)
-        return erb(:favorite_restaurants)
-      end
+    favorite = Favorites.new
+    repo = Favorites_Repository.new
+    favorite.place_id = session[:place_id]
+    favorite.name = session[:name]
+    favorite.user_id =  session[:user_id] 
+    @new_favorite = repo.create(favorite)
+    if @new_favorite == false
+      flash[:error] = "Already liked this restaurant"
+      search = RestaurantFinder.new('', favorite.place_id)
+      @place_info = search.restaurant_info
+      repo = ReviewRepository.new
+      all_reviews = repo.all
+      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+      return erb(:more_info)
+    else 
+      @all_favorites =  repo.user_favorite(favorite.user_id)
+      return erb(:favorite_restaurants)
+    end
   end
 
   post '/index/:place_id' do
@@ -156,8 +156,20 @@ class Application < Sinatra::Base
     review.user_id = session[:user_id]
     review.user_name = session[:user_name]
     repo.create(review)
+    # p "----------------------------------"
     redirect "/index/#{session[:place_id]}"
-end
+  end
+
+  post '/index/:place_id/delete' do
+    place_id = params[:place_id]
+    # review = params[:delete_review]
+    p "----------------------------------"
+    p params
+    p "----------------------------------"
+    repo = ReviewRepository.new
+    repo.delete(params[:id])
+    redirect "/index/#{session[:place_id]}"
+  end
 
   private
 
@@ -165,11 +177,15 @@ end
     return arg.sort_by!{|restaurant| [restaurant[2]]}.reverse!
   end
 
-  def logged_in?
-    if session[:user_id] == nil
-      return false  
-    else
-      return true
-    end 
+
+helpers do
+    def logged_in?
+      return session[:user_id] != nil
+    end
+
+    def reviews_author?(review)
+      return session[:user_id] == review.user_id.to_i
+    end  
   end
+ 
 end

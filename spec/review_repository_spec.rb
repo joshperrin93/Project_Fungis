@@ -61,8 +61,6 @@ RSpec.describe ReviewRepository do
 
             expect(review2.user_name.first).to eq "Josh"
             expect(review2.place_id.first).to eq 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-
-
         end
     end
 end
