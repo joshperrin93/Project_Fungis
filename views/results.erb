@@ -18,7 +18,7 @@
     <tr>
       <td><%=restaurant[0]%></td>
       <td><%=restaurant[1]%></td>
-      <td><%=restaurant[2]%></td>
+      <td>Rating: <%=restaurant[2]%></td>
       <% if restaurant[3][0] != nil %>
       <td><img alt=<%=restaurant[0]%> src=<%=restaurant[3][0].fetch_url(800)%>
         width="150" height="70"></td>
@@ -66,7 +66,12 @@ map = new google.maps.Map(document.getElementById('map'), {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent("<b>Name: </b>" + locations[i]["name"] + "<br /><b>Address: </b>" + locations[i]["address"]);
+          infowindow.setContent(
+            '<b>Name: </b>' + locations[i]["name"] + 
+            '<br /><b>Address: </b>' + locations[i]["address"] + 
+            '<br /><b>Rating: </b>' + locations[i]["rating"] + '/5' +
+            '<div class="more_info"><a href="/index/' + locations[i]["place_id"].toString() + '">More info' + '</a></div>'
+            );
           infowindow.open(map, marker);
         }
       })(marker, i));

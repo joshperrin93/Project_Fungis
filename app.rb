@@ -122,24 +122,24 @@ class Application < Sinatra::Base
   end
 
   post '/favorite_restaurants' do
-      favorite = Favorites.new
-      repo = Favorites_Repository.new
-      favorite.place_id = session[:place_id]
-      favorite.name = session[:name]
-      favorite.user_id =  session[:user_id] 
-      @new_favorite = repo.create(favorite)
-      if @new_favorite == false
-        flash[:error] = "Already liked this restaurant"
-        search = RestaurantFinder.new('', favorite.place_id)
-        @place_info = search.restaurant_info
-        repo = ReviewRepository.new
-        all_reviews = repo.all
-        @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
-        return erb(:more_info)
-      else 
-        @all_favorites =  repo.user_favorite(favorite.user_id)
-        return erb(:favorite_restaurants)
-      end
+    favorite = Favorites.new
+    repo = Favorites_Repository.new
+    favorite.place_id = session[:place_id]
+    favorite.name = session[:name]
+    favorite.user_id =  session[:user_id] 
+    @new_favorite = repo.create(favorite)
+    if @new_favorite == false
+      flash[:error] = "Already liked this restaurant"
+      search = RestaurantFinder.new('', favorite.place_id)
+      @place_info = search.restaurant_info
+      repo = ReviewRepository.new
+      all_reviews = repo.all
+      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
+      return erb(:more_info)
+    else 
+      @all_favorites =  repo.user_favorite(favorite.user_id)
+      return erb(:favorite_restaurants)
+    end
   end
 
   post '/index/:place_id' do
@@ -158,7 +158,7 @@ class Application < Sinatra::Base
     repo.create(review)
     # p "----------------------------------"
     redirect "/index/#{session[:place_id]}"
-end
+  end
 
   post '/index/:place_id/delete' do
     place_id = params[:place_id]

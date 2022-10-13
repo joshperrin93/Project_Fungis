@@ -10,7 +10,7 @@ class RestaurantFinder
 
     def find
         results = @client.spots_by_query('Vegan ' + @location, :types => ['restaurant', 'food'])
-        return results.map {|item| [item.name, item.formatted_address, item.rating, item.photos, item.place_id, item.lat, item.lng]}
+        return results.map {|item| [item.name, item.formatted_address, item.rating.to_f, item.photos, item.place_id, item.lat, item.lng]}
     end
 
     def find_name
@@ -30,7 +30,9 @@ class RestaurantFinder
                 "name" => item[0],
                 "lat" => item[5],
                 "lng" => item[6],
-                "address" => item[1]
+                "address" => item[1],
+                "place_id" => item[4],
+                "rating" => item[2]
             }
             info_bubble << hash
         end
