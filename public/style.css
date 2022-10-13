@@ -88,7 +88,7 @@ section {
 
 
 .search-btn:hover {
-    background-color: #198754;;
+    background-color: #198754;
 }
 
 h1 {
@@ -97,6 +97,48 @@ h1 {
     font-size: 1.5rem;
     padding: 20px;
 }
+
+input.logout-btn {
+    background-color: #9EF01A;
+    border: 1px solid transparent;
+}
+
+input.logout-btn:hover {
+    background-color: #198754;
+}
+
+
+.social {
+    
+    display: flex;
+    flex-direction: row;
+    align-items:  center;
+    align-self: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto;
+    max-width: 100%;
+    transform: translateY(-10px);
+
+    }
+
+
+.social a i {
+    
+     color: black;
+     width: 12px;
+     height: 12px;
+     padding: 20px;
+   
+}
+
+
+ .social a i:hover {
+        
+         color:  #9EF01A;
+    }
+
+
 
 #map {
     height: 60vh;

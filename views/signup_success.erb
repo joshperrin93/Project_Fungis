@@ -1,8 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Fungis</title>
+<link rel="stylesheet" href="/signup_success.css">
+</head>
+
+<body>
+
 <h1>Welcome to Fungis <%=@new_user.name%>!</h1>
 <br>
+<div class="new-user-container">
 <h2>Now Please Log In</h2>
 <form method = "post" action = "/index">
-  <input type= "text" name="email" placeholder="Email">
-  <input type="password"  name="password" placeholder="Password">
-  <input type="submit" value="Submit">
+  <input type= "text" name="email" placeholder="Email"> <br><br>
+  <input type="password"  name="password" placeholder="Password"> <br><br>
+  <input  class="signup-success-btn" type="submit" value="Submit">
 </form>
+</div>
+</body>
+
+</html>
