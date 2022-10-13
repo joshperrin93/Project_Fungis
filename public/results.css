@@ -6,30 +6,37 @@ body {
     position: relative; */
 }
 
-/* .navbar {
-    position:absolute;
-    flex-direction: row;
-    width: 100%;
-    margin: 20px;
-    height: 20px;
 
-} */
+.results-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px auto;
+}
 
 h1 {
     color: green;
     font-size: 1.5rem;
     text-align: center;
-    margin: 20px;
 }
 
-.container {
-    margin: 0 auto;
-  
-}
+
+#map {
+    height: 60vh;
+ }
+
+/* .table-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
 
 
 table {
     font-size: 1rem;
+ 
 }
 
 tr {
@@ -44,13 +51,24 @@ tr {
 
   td {
     display: block;
+    text-align: center;
+    padding: 5px;
   }
 
 
-#map {
-    height: 70vh;
- }
+  .table-btn {
 
-.name {
-    color: green;
-}
+        display: block;
+        padding: 5px;
+        text-align: center;
+        width: 100px;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color:  #9EF01A;
+        margin: 0 auto;
+  }
+
+.table-btn:hover {
+     background-color: #198754;
+    }
+
