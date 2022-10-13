@@ -16,8 +16,6 @@ require_relative 'lib/favorites_repository'
 require_relative 'lib/review'
 require_relative 'lib/review_repository'
 
-
-
 DatabaseConnection.connect
 
 class Application < Sinatra::Base
@@ -29,8 +27,11 @@ class Application < Sinatra::Base
     enable :sessions
   end
 
+  get "/" do
+    return erb(:test)
+  end
+
   get '/index' do
-    # puts logged_in?
     return erb(:index)
   end
 
@@ -66,34 +67,20 @@ class Application < Sinatra::Base
     results = Geocoder.search(location)
     @centre = results.first.coordinates
     @sorted_restaurants = sort_by_rating(restaurants)
-    @coordinates = []
-    @sorted_restaurants.each {|restaurant| 
-    @coordinates.push([restaurant[5], restaurant[6]])
-}
-    # @coordinates = [{"lat" =>51.5000, "lng" => -0.3333}, {"lat" => 51.509865, "lng" => -0.118092}, {"lat" => 51.485093, "lng" => -0.174936}]
+    @info_bubbles = search.info_bubble(@sorted_restaurants)
     return erb(:results)
   end
 
   get '/index/:place_id' do
     repo = ReviewRepository.new
     place_id = params[:place_id]
-    # saved_restaurants = []
-    # session[:saved_restaurants] = place_id
-    # saved_restaurants.push(place_id)
     session[:place_id] = place_id
     search = RestaurantFinder.new('', place_id)
     @place_info = search.restaurant_info
-
     session[:name] = @place_info.name
-      # p session[:place_id]
-      # p session[:user_id]
-      all_reviews = repo.all
-      @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
-      # p "++++++++++++++++++"
-      # p @reviews_for_place
-      # p "++++++++++++++++++"
+    all_reviews = repo.all
+    @reviews_for_place = all_reviews.select {|review| review.place_id == session[:place_id]}
     return erb(:more_info)
-
   end
 
   get '/signup' do
@@ -124,12 +111,13 @@ class Application < Sinatra::Base
     @new_user.password = params[:password]
     @new_user.email = params[:email]
     add_new_user.create(@new_user)
-      return erb(:signup_success)
+    return erb(:signup_success)
   end
 
   get '/favorite_restaurants' do
     repo = Favorites_Repository.new
-    @all_favorites =  repo.all
+    user = session[:user_id]
+    @all_favorites = repo.user_favorite(user)
     return erb(:favorite_restaurants)
   end
 
@@ -191,22 +179,13 @@ end
 
 
 helpers do
-  def logged_in?
-    return session[:user_id] != nil
+    def logged_in?
+      return session[:user_id] != nil
+    end
+
+    def reviews_author?(review)
+      return session[:user_id] == review.user_id.to_i
+    end  
   end
-
-  def reviews_author?(review)
-    # review = Review.new
-    p "at this point --------------------------"
-    p review.user_id
-    p session[:user_id]
-    return session[:user_id] == review.user_id.to_i
-  end  
-end
  
-
-
-
-
-
 end

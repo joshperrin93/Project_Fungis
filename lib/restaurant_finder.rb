@@ -22,6 +22,20 @@ class RestaurantFinder
         place = @client.spot(@place_id)
         return place
     end
+
+    def info_bubble(array)
+        info_bubble = []
+        array.each do |item|
+            hash = {
+                "name" => item[0],
+                "lat" => item[5],
+                "lng" => item[6],
+                "address" => item[1]
+            }
+            info_bubble << hash
+        end
+        return info_bubble
+    end
 end
 
 # restaurant = RestaurantFinder.new('London', '')

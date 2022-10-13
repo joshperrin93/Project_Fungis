@@ -7,10 +7,14 @@
     <td>Phone number: <%=@place_info.formatted_phone_number%></td>
   </tr>
   <tr>
-    <td>Website: <%=@place_info.website%></td>
+    <td>Website: <a href=<%=@place_info.website%>> <%=@place_info.name%> Website</a> </td>
   </tr>
   <tr>
-    <td>Opening hours: <%=@place_info.opening_hours['weekday_text']%></td>
+    <td>Opening hours:
+              <%@place_info.opening_hours['weekday_text'].each do |day| %>
+                <p><%= day %></p>
+              <%end%></td> 
+
   </tr>
   <tr>
     <td>Opening now: <%=@place_info.opening_hours['open_now']%></td>
@@ -30,23 +34,19 @@
          <h1>Reviews</h1>
          <% @reviews_for_place.map do |review|  %>
              <tr>
-               <td><%=review.comment%></td>
+               <td>Name: <%=review.user_name%></td>
+               <td>Date: <%=review.date_posted%></td>
                <br>
-               <td><%=review.rating%></td>
+               <td>Review: <%=review.comment%></td>
                <br>
-               <td><%=review.date_posted%></td>
+               <td>Rating: <%=review.rating%>/5</td>
                <br>
-               <td><%=review.user_name%></td>
-               <br> 
-               <p>Review user_id: <%= review.user_id%></p>
-               <p>Session user_id: <%= session[:user_id]%></p>
                <% if reviews_author?(review) %>
                 <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
                     <label for="Delete Review">Delete</label>
                     <button name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
                 </form>
               <%end%> 
-         
          <%end%>
 
 
