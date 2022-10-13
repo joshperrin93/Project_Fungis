@@ -42,36 +42,51 @@
   </div>
   <br>
 
-  <div class= "">
-    <img alt=<%=@place_info.name%> src=<%=@place_info.photos[0].fetch_url(800)%>
+  <% if session[:user_id] != nil %>
+    <div>
+    <form method = "post" action = "/favorite_restaurants">  
+      <input class="btn" type="submit" value="Favourite this restaurant">
+    </form>
+    </div>
+  <%end%>
+
+  <br>
+  <br>
+
+  <div class= "photos">
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[0].fetch_url(800)%>
             width=150" height="70">
-    <img alt=<%=@place_info.name%> src=<%=@place_info.photos[1].fetch_url(800)%>
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[1].fetch_url(800)%>
             width=150" height="70">
-    <img alt=<%=@place_info.name%> src=<%=@place_info.photos[2].fetch_url(800)%>
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[2].fetch_url(800)%>
             width=150" height="70">
-    <img alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
+    <img class="img" alt=<%=@place_info.name%> src=<%=@place_info.photos[3].fetch_url(800)%>
             width=150" height="70">
   </div>
   <br>
-
+  <br>
   <div class= "">   
     <h1>Reviews</h1>
+    <div class= "card">  
     <% @reviews_for_place.map do |review|  %>
         <tr>
-          <td>Name: <%=review.user_name%></td>
-          <td>Date: <%=review.date_posted%></td>
+          <td> <div class = "card-header"> <strong><%=review.user_name%></strong></td>
+          <td>on <%=review.date_posted%></div></td>
           <br>
-          <td>Review: <%=review.comment%></td>
+          <td>Review: <%=review.comment%> </td>
           <br>
           <td>Rating: <%=review.rating%>/5</td>
           <br>
+          <br>
           <% if reviews_author?(review) %>
           <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
-              <label for="Delete Review">Delete</label>
-              <button name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
+              <label for="Delete Review"></label>
+              <button class="btn btn-outline-success" name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
           </form>
+          <br>
         <%end%> 
     <%end%>
+    </div>
   </div>
 
 <br>
@@ -79,13 +94,13 @@
 <div class= "">
   <div>
   <form method = "post" action = "/index/<%=session[:place_id]%>">
-    <label for="review">Leave a review for<%=@place_info.name%>: </label>
+    <label for="review">Leave a review for <%=@place_info.name%>: </label>
     <br>
-    <textarea id="review_box" name="review" rows="4" cols="50">
+    <textarea id="review_box" name="review" rows="6" cols="60">
     </textarea> 
     <br>
     <label for="pet-select">How do you rate <%=@place_info.name%>?</label>
-
+  <br>
   <select required name="rating" id="rating">
       <option value="" disabled selected>--Please choose an option?--</option>
       <option value=1>1</option>
@@ -95,14 +110,10 @@
       <option value=5>5</option>
   </select>
   <br>
-    <input type="submit" value="Submit Review">
+  <br>
+    <input type="submit" value="Submit Review" class="btn btn-outline-success">
   </form>
-
-  </div>
-
-  <form method = "post" action = "/favorite_restaurants">  
-    <input type="submit" value="Favourite">
-  </form>
+  <br>
   </div>
   <%end%>
   </div>

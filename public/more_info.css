@@ -13,5 +13,17 @@
     margin-right: 550px;
     /* text-align: center;  */
     padding: 20px;
-    /* border: 3px solid green; */
+    border: 3px grey;
 }
+
+.img {
+    width: auto;
+    height: 200px;
+}
+
+.btn {
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #d3d3d3;
+    background-color:  #9EF01A;
+ }
