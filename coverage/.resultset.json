@@ -2,7 +2,6 @@
   "RSpec": {
     "coverage": {
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/favourites_repository_spec.rb": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/favourites_repository_spec.rb": {
         "lines": [
           1,
           null,
@@ -267,8 +266,6 @@
           1,
           1,
           null,
-          null,
-          null,
           1,
           null,
           1,
@@ -285,7 +282,6 @@
           null,
           null,
           1,
-          null,
           1,
           null,
           null,
@@ -323,33 +319,18 @@
           1,
           1,
           1,
-          1,
           null,
           null,
           1,
           1,
           1,
-          null,
-          null,
-          null,
           1,
           1,
           1,
-          null,
           1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
           1,
           5,
           1,
-          1,
-          1,
-          1,
-          null,
           null,
           null,
           1,
@@ -441,16 +422,10 @@
           0,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/restaurant_finder.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/restaurant_finder.rb": {
         "lines": [
           1,
           1,
@@ -497,15 +472,13 @@
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user.rb": {
-
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/ellabastian/Makers/Project_Fungis/lib/user_repository.rb": {
+      "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/user_repository.rb": {
         "lines": [
           1,
           1,
@@ -561,7 +534,6 @@
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/review.rb": {
-      "/Users/ellabastian/Makers/Project_Fungis/lib/review.rb": {
         "lines": [
           1,
           1,
@@ -569,7 +541,6 @@
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/lib/review_repository.rb": {
-      "/Users/ellabastian/Makers/Project_Fungis/lib/review_repository.rb": {
         "lines": [
           1,
           1,
@@ -625,7 +596,6 @@
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/restaurant_finder_spec.rb": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/restaurant_finder_spec.rb": {
         "lines": [
           1,
           null,
@@ -665,7 +635,6 @@
         ]
       },
       "/Users/joshuaperrin/Desktop/Projects/fungis_project/spec/review_repository_spec.rb": {
-      "/Users/ellabastian/Makers/Project_Fungis/spec/review_repository_spec.rb": {
         "lines": [
           1,
           null,
@@ -801,7 +770,6 @@
         ]
       }
     },
-    "timestamp": 1665588118
-    "timestamp": 1665587169
+    "timestamp": 1665651497
   }
 }
