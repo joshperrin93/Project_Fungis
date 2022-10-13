@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.title {
+    transform: translateY(180px);
+}
+
+.form-container {
+
+    background-image: url("salad.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+
+}
+
+input {
+    border: 1px solid #d3d3d3;
+    border-radius: 10px;
+}
+
+input.btn {
+    display: block;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color:  #9EF01A;
+}
+
+
+
+.btn {
+   margin: 0 auto;
+   padding: 10px;
+   border: 1px solid #d3d3d3;
+   background-color:  #9EF01A;
+}
+
+input.btn:hover {
+    background-color: #198754;
+}

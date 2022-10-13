@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    flex-wrap: wrap;
+    width: 700px;
+    height: 400px;
+    border: 1px solid #A9A9A9;
+    box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .1);
+   
+  }
