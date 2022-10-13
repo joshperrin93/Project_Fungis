@@ -1,15 +1,34 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fungis</title>
+    <link rel="stylesheet" href="/signup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  </head>
 
 <body>
 
+<div class="title">
 <h1> Sign up </h1>
+</div>
+
+<div class="form-container">
 
 <form method = "post" action = "/signup_success">  
-  <label for="name">Name &nbsp; </label><input type="text" name="name" placeholder="Name" required>
-  <label for="Email">Email address &nbsp;</label><input type= "text" name="email" placeholder="Email" required>
-  <label for="Password">Password &nbsp;</label><input type="password"  name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" maxlength="20" required>
-  <input type="submit" value="Submit">
+  <label for="name"></label><input type="text" name="name" placeholder="Name" required> <br> <br>
+  <label for="Email"></label><input type= "text" name="email" placeholder="Email" required> <br> <br>
+  <label for="Password"></label><input type="password"  name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" maxlength="20" required>
+  <br><br>
+  <input class="btn" type="submit" value="Submit">
 </form>
+
+</div>
 
 </body>
 </html>
