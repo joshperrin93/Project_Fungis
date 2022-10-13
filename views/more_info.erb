@@ -32,7 +32,7 @@
 
          
          <h1>Reviews</h1>
-         <% @reviews_for_place.each do |review|  %>
+         <% @reviews_for_place.map do |review|  %>
              <tr>
                <td>Name: <%=review.user_name%></td>
                <td>Date: <%=review.date_posted%></td>
@@ -41,8 +41,13 @@
                <br>
                <td>Rating: <%=review.rating%>/5</td>
                <br>
-         
-         <% end %>
+               <% if reviews_author?(review) %>
+                <form method = "post" action = "/index/<%=session[:place_id]%>/delete" >
+                    <label for="Delete Review">Delete</label>
+                    <button name= "id" value="<%=review.id%>" type="submit" name="search">Delete Review</button>
+                </form>
+              <%end%> 
+         <%end%>
 
 
 <% if session[:user_id] != nil %>
