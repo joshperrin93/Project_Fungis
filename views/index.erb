@@ -23,8 +23,11 @@
 
   <section>
 
- <h1> Welcome To Fungis </h1> <br>
-
+<% if session[:user_name] %>
+ <h1> Welcome To Fungis <%= session[:user_name] %></h1> <br>
+<% else %>
+  <h1> Welcome To Fungis </h1> <br>
+<% end %>
    
     <form  class="main-container" action="/results" method="post">
     <div class="container">

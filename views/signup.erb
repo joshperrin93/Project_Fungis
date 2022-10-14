@@ -23,7 +23,7 @@
 <form method = "post" action = "/signup_success">  
   <label for="name"></label><input type="text" name="name" placeholder="Name" required> <br> <br>
   <label for="Email"></label><input type= "text" name="email" placeholder="Email" required> <br> <br>
-  <label for="Password"></label><input type="password"  name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" maxlength="20" required>
+  <label for="Password"></label><input type="password"  name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" oninvalid="this.setCustomValidity('Please include at least one upper and one lower case letter and one number')" maxlength="20" required>
   <br><br>
   <input class="btn" type="submit" value="Submit">
 </form>
